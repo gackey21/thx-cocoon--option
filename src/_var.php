@@ -162,17 +162,26 @@ if (wp_is_mobile()) {
 	$thx_main_wd += floatval($main_column_border_width) * 2;
 	$thx_main_wd_px = $thx_main_wd.'px';
 
-}
-
+}//wp_is_mobile()
 
 ///////////////////////////////////////
 // カラム（.wp-block-columns）の指定
 ///////////////////////////////////////
-
 //子カラムの横マージン
 $thx_clm_mg = $thx_fw * 2;
 //$thx_clm_mg_px = $thx_clm_mg.'px';
 
-
-
-?>
+///////////////////////////////////////
+// Typography初期設定
+///////////////////////////////////////
+$str_mg_shift = 1;
+// $str_mg_shift = $thx_fz / 20;
+$str_mg_top = floatval($thx_gls / 2 - $str_mg_shift);
+$str_mg_btm = floatval($thx_gls / 2 + $str_mg_shift);
+$str_mg_top_css = 'margin-top: -'.$str_mg_top.'px;';
+$str_mg_btm_css = 'margin-bottom: -'.$str_mg_btm.'px;';
+$str_str_mg_top_css = 'margin-top: '.$str_mg_btm.'px;';
+$str_div_mg_top_css = 'margin-top: '.floatval($thx_gls + $thx_glh).'px;';
+$div_str_mg_top_css = 'margin-top: '.floatval($str_mg_btm + $thx_glh).'px;';
+$div_div_mg_top_css = 'margin-top: '.floatval($thx_gls + $thx_glh).'px;';
+$grid_shift = floatval($str_mg_shift * 2);//未検証
