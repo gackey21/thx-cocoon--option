@@ -73,3 +73,57 @@ h6,
 .a-wrap .blogcard {
 	border-color: <?=$thx_sub?>;
 }
+ul {
+	position: relative;
+}
+ul li {
+	list-style-type: none;
+}
+ul li:before {
+	position: absolute;
+	left : 1em;
+	color: <?=$thx_key?>;
+	font-family: FontAwesome;
+	content: "\f0da";
+}
+li ul li:before {
+	position: absolute;
+	left : 1em;
+	color: <?=$thx_sub?>;
+	font-family: FontAwesome;
+	content: "\f105";
+}
+.sidebar {
+	<?php if (! get_sidebar_padding()): ?>
+	padding: <?=$thx_gls_px?> <?=$thx_fw_px?>;
+	<?php endif; ?>
+	font-size: <?=$thx_fz * $thx_sb_ratio?>px;
+	line-height: <?=$thx_glh * $thx_sb_ratio?>px;
+}
+.sidebar h3 {
+	padding: 0.4em;
+	margin: 0.3em 0;
+}
+.widget-entry-cards .a-wrap {
+	margin: <?=$thx_gls * $thx_sb_ratio?>px 0;
+}
+.sidebar li:before {
+	line-height: <?=($thx_fz + $thx_gls * 2) * $thx_sb_ratio?>px;
+}
+.sidebar :not(li) > ul > li:before {
+	left : -<?=$thx_fw * $thx_sb_ratio * 0.5?>px;
+}
+.sidebar ul li ul {
+	padding-left: <?=$thx_fw * $thx_sb_ratio * 1.5?>px;
+}
+.sidebar ul li a {
+	border-bottom: 1px solid <?=$thx_sub__050?>;
+	padding: 0;
+	padding-top: <?=$thx_gls * $thx_sb_ratio?>px;
+	line-height: 1;
+}
+.sidebar ul li a:hover {
+	border-color: <?=$thx_key?>;
+	background-color: <?=$thx_key_095?>;
+	transition: 0.1s;
+}
