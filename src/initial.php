@@ -69,3 +69,7 @@ h6,
 	box-shadow: 0 0 8px rgba(0, 0, 0, 0.24);
 	transition-duration: 0.3s;
 }
+.article .toc,
+.a-wrap .blogcard {
+	border-color: <?=$thx_sub?>;
+}
