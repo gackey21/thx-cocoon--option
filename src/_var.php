@@ -25,6 +25,7 @@
 $white = '#ffffff';
 $white_hsla = colorcode_to_hsla($white);
 $thx_frost = 'background: '.hsla_to_css_code($white_hsla, 1.0, 0.8).';';
+$thx_frost_hover = 'background: '.hsla_to_css_code($white_hsla, 1.0, 0.9).';';
 
 //キーカラー
 if (get_site_key_color()){
