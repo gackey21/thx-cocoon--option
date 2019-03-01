@@ -1,5 +1,10 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php if (get_site_key_color()): ?>
+<?php
+///////////////////////////////////////
+// キーカラー
+///////////////////////////////////////
+?>
 .entry-title,
 .archive-title {
 	<?php if (!get_site_key_text_color()): ?>
@@ -8,6 +13,66 @@
 	background-color: <?=$thx_key?>;
 }
 <?php endif;//get_site_key_color() ?>
+<?php
+///////////////////////////////////////
+// 背景色
+///////////////////////////////////////
+?>
+body {
+	<?php if (! get_site_background_color()): ?>
+	background-color: <?=$thx_bg?>;
+	<?php endif; ?>
+}
+<?php
+///////////////////////////////////////
+// ボタンカラー
+///////////////////////////////////////
+?>
+.go-to-top-button {
+	<?php if (! get_go_to_top_background_color()): ?>
+	background-color: <?=$thx_sub?>;
+	<?php endif; ?>
+	<?php if (! get_go_to_top_text_color()): ?>
+	color: #ddd;
+	<?php endif; ?>
+}
+.go-to-top-button:hover {
+	<?php if (! get_go_to_top_text_color()): ?>
+	color: #fff;
+	<?php endif; ?>
+}
+<?php
+///////////////////////////////////////
+// サブカラー
+///////////////////////////////////////
+?>
+.article .toc,
+.a-wrap .blogcard {
+	border-color: <?=$thx_sub?>;
+}
+.article h2::after,
+.article h3::after,
+.article h4::after,
+.article h5::after,
+.article h6::after {
+	color: <?php echo $thx_sub__050; ?>;
+}
+.article h2:hover::after,
+.article h3:hover::after,
+.article h4:hover::after,
+.article h5:hover::after,
+.article h6:hover::after {
+	color: <?php echo $thx_sub__000; ?>;
+}
+<?php
+///////////////////////////////////////
+// 好みのカスタマイズ
+///////////////////////////////////////
+?>
+<?php
+///////////////////////////////////////
+// フォント
+?>
 body {
 	font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 	-webkit-text-size-adjust: 100%;
@@ -55,6 +120,24 @@ h6,
 .archive-title {
 	text-shadow: 0.075em 0.075em 0.02em rgba(0, 0, 0, 0.21);
 }
+<?php
+///////////////////////////////////////
+// 見出し
+?>
+.article h3 {
+	border: none;
+  background: linear-gradient(90deg, <?php echo $thx_key_080; ?>, #fff);
+}
+.article h4,
+.article h5,
+.article h6 {
+  border-color: <?php echo $thx_key_060; ?>;
+  background: <?=$white?>;
+}
+<?php
+///////////////////////////////////////
+// リンク
+?>
 .wp-block-image a img,
 .a-wrap {
 	border-radius: 4px;
@@ -69,10 +152,10 @@ h6,
 	box-shadow: 0 0 8px rgba(0, 0, 0, 0.24);
 	transition-duration: 0.3s;
 }
-.article .toc,
-.a-wrap .blogcard {
-	border-color: <?=$thx_sub?>;
-}
+<?php
+///////////////////////////////////////
+// ul
+?>
 ul {
 	position: relative;
 }
@@ -93,6 +176,10 @@ li ul li:before {
 	font-family: FontAwesome;
 	content: "\f105";
 }
+<?php
+///////////////////////////////////////
+// サイドバー
+?>
 .sidebar {
 	<?php if (! get_sidebar_padding()): ?>
 	padding: <?=$thx_gls_px?> <?=$thx_fw_px?>;
@@ -108,7 +195,7 @@ li ul li:before {
 	margin: <?=$thx_gls * $thx_sb_ratio?>px 0;
 }
 .sidebar li:before {
-	line-height: <?=($thx_fz + $thx_gls * 2) * $thx_sb_ratio?>px;
+	line-height: 1;
 }
 .sidebar :not(li) > ul > li:before {
 	left : -<?=$thx_fw * $thx_sb_ratio * 0.5?>px;
@@ -117,9 +204,9 @@ li ul li:before {
 	padding-left: <?=$thx_fw * $thx_sb_ratio * 1.5?>px;
 }
 .sidebar ul li a {
+	margin-top: <?=$thx_gls * $thx_sb_ratio?>px;
 	border-bottom: 1px solid <?=$thx_sub__050?>;
 	padding: 0;
-	padding-top: <?=$thx_gls * $thx_sb_ratio?>px;
 	line-height: 1;
 }
 .sidebar ul li a:hover {
