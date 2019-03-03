@@ -242,6 +242,23 @@ h6,
 }
 <?php
 ///////////////////////////////////////
+// under-entry-content の並び順
+?>
+.under-entry-content {
+	display: flex;
+	flex-direction: column;
+}
+.under-entry-content .related-entries {
+	order: 2;
+}
+.under-entry-content .pager-post-navi {
+	order: -1;
+}
+.under-entry-content .comment-area {
+	order: 3;
+}
+<?php
+///////////////////////////////////////
 // ul
 ?>
 ul {
