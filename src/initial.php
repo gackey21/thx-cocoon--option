@@ -261,20 +261,20 @@ h6,
 ///////////////////////////////////////
 // ul
 ?>
-ul {
+.content ul {
 	position: relative;
 }
 ul li {
 	list-style-type: none;
 }
-ul li:before {
+.content ul li:before {
 	position: absolute;
 	left : 1em;
 	color: <?=$thx_key?>;
 	font-family: FontAwesome;
 	content: "\f0da";
 }
-li ul li:before {
+.content li ul li:before {
 	position: absolute;
 	left : 1em;
 	color: <?=$thx_sub?>;
