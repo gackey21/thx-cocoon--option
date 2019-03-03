@@ -189,30 +189,6 @@ h6,
 }
 <?php
 ///////////////////////////////////////
-// ul
-?>
-ul {
-	position: relative;
-}
-ul li {
-	list-style-type: none;
-}
-ul li:before {
-	position: absolute;
-	left : 1em;
-	color: <?=$thx_key?>;
-	font-family: FontAwesome;
-	content: "\f0da";
-}
-li ul li:before {
-	position: absolute;
-	left : 1em;
-	color: <?=$thx_sub?>;
-	font-family: FontAwesome;
-	content: "\f105";
-}
-<?php
-///////////////////////////////////////
 // サイドバー
 ?>
 .sidebar {
@@ -252,4 +228,28 @@ li ul li:before {
 .widget-entry-cards.large-thumb-on .card-content {
 	white-space: nowrap;
 	overflow: hidden;
+}
+<?php
+///////////////////////////////////////
+// ul
+?>
+ul {
+	position: relative;
+}
+ul li {
+	list-style-type: none;
+}
+ul li:before {
+	position: absolute;
+	left : 1em;
+	color: <?=$thx_key?>;
+	font-family: FontAwesome;
+	content: "\f0da";
+}
+li ul li:before {
+	position: absolute;
+	left : 1em;
+	color: <?=$thx_sub?>;
+	font-family: FontAwesome;
+	content: "\f105";
 }
