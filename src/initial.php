@@ -176,6 +176,17 @@ h6,
 .ect-big-card .card-content {
 	margin-top: 10px;
 }
+/* 関連記事（デフォルト） */
+.related-entry-card-content {
+	padding-bottom: 0;
+}
+/* 関連記事（縦型） */
+.rect-vartical-card .related-entry-card-content {
+	margin: <?=$thx_gls * $thx_sb_ratio * 0.8?>px 0 0;
+}
+.rect-vartical-card .related-entry-card-wrap {
+	padding: <?=$thx_gls * $thx_sb_ratio * 0.8?>px;
+}
 <?php
 ///////////////////////////////////////
 // ul
