@@ -177,7 +177,7 @@ h6,
 	margin-top: 10px;
 }
 /* 関連記事（デフォルト） */
-.related-entry-card-content {
+.rect-entry-card .related-entry-card-content {
 	padding-bottom: 0;
 }
 /* 関連記事（縦型） */
