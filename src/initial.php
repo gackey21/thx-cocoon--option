@@ -81,7 +81,18 @@ body {
 	font-weight: 800;
 	line-height: 1.5em;
 }
-
+.logo-text {
+	padding: 0;
+}
+.footer {
+	padding-top: 2px;
+}
+.footer-bottom-logo .site-name-text {
+	font-size: 2rem;
+}
+.footer-bottom-content .copyright {
+	margin-top: 2px;
+}
 .entry-title,
 .archive-title,
 h1 {
