@@ -214,7 +214,7 @@ h6,
 	margin: 0.3em 0;
 }
 .sidebar li:before {
-	line-height: 1;
+	line-height: <?=$thx_fz * $thx_sb_ratio + 7?>px;
 }
 .sidebar :not(li) > ul > li:before {
 	left : -<?=$thx_fw * $thx_sb_ratio * 0.5?>px;
@@ -225,7 +225,7 @@ h6,
 .sidebar ul li a {
 	margin-top: <?=$thx_gls * $thx_sb_ratio?>px;
 	border-bottom: 1px solid <?=$thx_sub__050?>;
-	padding: 0;
+	padding: 4px 4px 2px;
 	line-height: 1;
 }
 .sidebar ul li a:hover {
