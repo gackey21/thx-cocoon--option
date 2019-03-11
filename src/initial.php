@@ -166,8 +166,9 @@ h6,
 	border-color: <?=$thx_sub?>;
 }
 /* サムネイルの上下余白除去 */
-[class$="card-thumb"] {
+.entry-card [class$="card-thumb"] {
 	margin-top: 0;
+	margin-bottom: 0;
 	line-height: 0;
 }
 .cat-label {
