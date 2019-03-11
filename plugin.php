@@ -38,6 +38,12 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 				'amp_all_css',
 				array( $this, 'echo_amp_css' )
 			);
+			// コンテンツ変更　フック
+			add_filter(
+				'the_content',
+				array( $this, 'content_replace' ),
+				20900
+			);
 		}//__construct()
 
 		static $_var = __DIR__.'/src/_var.php';//変数ファイル
@@ -58,6 +64,7 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 			require_once( thx_Typography::$css_amp_dir.'_typography.php' );
 			require_once( thx_Typography::$css_amp_dir.'amp.php' );
 			require_once( thx_Typography::$css_amp_dir.'h.php' );
+			require_once( thx_Typography::$css_amp_dir.'kaereba.php' );
 		}
 		//amp_all_cssにecho
 		public function echo_amp_css($css) {
@@ -67,6 +74,17 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 			$css .= minify_css($minimum);
 			echo $css;
 		}
+		//コンテンツ変更
+		public function content_replace($the_content) {
+			$match = '{(<div class="shoplinkyahoo">.*?)(Yahooショッピング)(.*?</div>)}uis';
+			$replece = '$1Yahoo!$3';
+			$the_content = preg_replace(
+				$match,
+				$replece,
+				$the_content
+			);
+			return $the_content;
+		}//wao_space($the_content)
 	}//class
 }//! class_exists
 //設定変更CSSを読み込む
@@ -88,5 +106,35 @@ function wp_add_css_custome_to_inline_style(){
 	}
 }
 endif;//!function_exists( 'wp_add_css_custome_to_inline_style' )
+
+//親テーマstyle.cssの読み込み
+if ( !function_exists( 'wp_enqueue_style_theme_style' ) ):
+function wp_enqueue_style_theme_style(){
+	//バッファリング
+	ob_start();
+	require (get_template_directory() . '/style.css');
+	$css = ob_get_clean();
+	// $css = str_replace('height: 100% !important;','height: 100%;',$css);
+	$css = preg_replace('/(\.booklink-box,.*?})/uis','',$css);
+	$css = preg_replace('/(\.booklink-image,.*?})/uis','',$css);
+	$css = preg_replace('/(\.booklink-info,.*?})/uis','',$css);
+	$css = preg_replace('/(\.booklink-link2>*,.*?})/uis','',$css);
+	// $css = preg_replace('/(\.booklink-image.*?})/uis','',$css);
+	// $css = preg_replace('/(\.booklink-.*?})/uis','',$css);
+	// $css = preg_replace('/((\.booklink-)|(\.kaerebalink-).*?})/uis','',$css);
+	// $css = preg_replace('/(?<=}).*?(related-entry-card-content)*?.*?}/uis','',$css);
+	//ファイル書き出し
+	$path = __DIR__.'/dest/thx-style.css';
+	$tco = new thx_Cocoon_Option();
+	$tco -> str_to_file($path, $css);
+	// $cocoon_css = get_template_directory_uri() . '/style.css';
+	// var_dump($cocoon_css);
+	wp_enqueue_style(
+		THEME_NAME.'-style',
+		plugins_url( 'dest/thx-style.css', __FILE__ )
+	);
+	// wp_enqueue_style( THEME_NAME.'-style', $cocoon_css );
+}
+endif;//!function_exists( 'wp_enqueue_style_theme_style' )
 
 new thx_Cocoon_Option;
