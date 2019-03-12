@@ -114,15 +114,15 @@ function wp_enqueue_style_theme_style(){
 	ob_start();
 	require (get_template_directory() . '/style.css');
 	$css = ob_get_clean();
-	// $css = str_replace('height: 100% !important;','height: 100%;',$css);
-	$css = preg_replace('/(\.booklink-box,.*?})/uis','',$css);
-	$css = preg_replace('/(\.booklink-image,.*?})/uis','',$css);
-	$css = preg_replace('/(\.booklink-info,.*?})/uis','',$css);
-	$css = preg_replace('/(\.booklink-link2>*,.*?})/uis','',$css);
-	// $css = preg_replace('/(\.booklink-image.*?})/uis','',$css);
-	// $css = preg_replace('/(\.booklink-.*?})/uis','',$css);
-	// $css = preg_replace('/((\.booklink-)|(\.kaerebalink-).*?})/uis','',$css);
-	// $css = preg_replace('/(?<=}).*?(related-entry-card-content)*?.*?}/uis','',$css);
+	//カエレバ削除
+	preg_match_all(
+		'/.*?\n([^{}]*?kaerebalink-.*?})/uis',
+		$css,
+		$match
+	);
+	foreach ($match[1] as $value) {
+		$css = str_replace($value,'',$css);
+	}
 	//ファイル書き出し
 	$path = __DIR__.'/dest/thx-style.css';
 	$tco = new thx_Cocoon_Option();
