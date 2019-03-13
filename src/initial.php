@@ -166,7 +166,7 @@ h6,
 	border-color: <?=$thx_sub?>;
 }
 /* サムネイルの上下余白除去 */
-.entry-card [class$="card-thumb"] {
+[class$="card-thumb"] {
 	margin-top: 0;
 	margin-bottom: 0;
 	line-height: 0;
