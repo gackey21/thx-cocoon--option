@@ -24,9 +24,16 @@
 //汎用色
 $white = '#ffffff';
 $white_hsla = colorcode_to_hsla($white);
-$thx_frost = 'background: '.hsla_to_css_code($white_hsla, 1.0, 0.8).';';
-$thx_frost_hover = 'background: '.hsla_to_css_code($white_hsla, 1.0, 0.9).';';
-
+$thx_frost =
+	'background: '.hsla_to_css_code($white_hsla, 1.0, 0.8).';';
+$thx_frost_hover =
+	'background: '.hsla_to_css_code($white_hsla, 1.0, 0.9).';';
+$thx_frost_btm =
+	'background: linear-gradient(
+		to bottom, '
+		.hsla_to_css_code($white_hsla, 1.0, 0.0).' 00%, '
+		.hsla_to_css_code($white_hsla, 1.0, 0.8).' 05%, '
+		.$white.' 80%);';
 //キーカラー
 if (get_site_key_color()){
 	$thx_key = get_site_key_color();
