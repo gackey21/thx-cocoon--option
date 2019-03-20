@@ -39,24 +39,24 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 				array( $this, 'echo_amp_css' )
 			);
 			// コンテンツ変更　フック
-			add_filter(
-				'the_content',
-				array( $this, 'content_replace' ),
-				20900
-			);
+			// add_filter(
+			// 	'the_content',
+			// 	array( $this, 'content_replace' ),
+			// 	20900
+			// );
 		}//__construct()
 
 		static $_var = __DIR__.'/src/_var.php';//変数ファイル
 		static $src = __DIR__.'/src/';
 
 		//ファイル書き出し
-		public function str_to_file($path, $str) {
-			require_once( ABSPATH.'wp-admin/includes/file.php' );
-			if ( WP_Filesystem() ) {
-				global $wp_filesystem;
-				$wp_filesystem -> put_contents( $path, $str );
-			}
-		}
+		// public function str_to_file($path, $str) {
+		// 	require_once( ABSPATH.'wp-admin/includes/file.php' );
+		// 	if ( WP_Filesystem() ) {
+		// 		global $wp_filesystem;
+		// 		$wp_filesystem -> put_contents( $path, $str );
+		// 	}
+		// }
 		//ミニマムなcss
 		public static function minimum_css() {
 			require( thx_Cocoon_Option::$_var );
@@ -75,16 +75,16 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 			echo $css;
 		}
 		//コンテンツ変更
-		public function content_replace($the_content) {
-			$match = '{(<div class="shoplinkyahoo">.*?)(Yahooショッピング)(.*?</div>)}uis';
-			$replece = '$1Yahoo!$3';
-			$the_content = preg_replace(
-				$match,
-				$replece,
-				$the_content
-			);
-			return $the_content;
-		}//wao_space($the_content)
+		// public function content_replace($the_content) {
+		// 	$match = '{(<div class="shoplinkyahoo">.*?)(Yahooショッピング)(.*?</div>)}uis';
+		// 	$replece = '$1Yahoo!$3';
+		// 	$the_content = preg_replace(
+		// 		$match,
+		// 		$replece,
+		// 		$the_content
+		// 	);
+		// 	return $the_content;
+		// }
 	}//class
 }//! class_exists
 //設定変更CSSを読み込む
@@ -125,8 +125,8 @@ function wp_enqueue_style_theme_style(){
 	}
 	//ファイル書き出し
 	$path = __DIR__.'/dest/thx-style.css';
-	$tco = new thx_Cocoon_Option();
-	$tco -> str_to_file($path, $css);
+	$tcc = new thx_Customize_Core();
+	$tcc -> str_to_file($path, $css);
 	// $cocoon_css = get_template_directory_uri() . '/style.css';
 	// var_dump($cocoon_css);
 	wp_enqueue_style(
