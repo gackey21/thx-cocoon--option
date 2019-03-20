@@ -133,13 +133,13 @@ h6,
 ?>
 .article h3 {
 	border: none;
-  background: linear-gradient(90deg, <?php echo $thx_key_080; ?>, #fff);
+	background: linear-gradient(90deg, <?php echo $thx_key_080; ?>, #fff);
 }
 .article h4,
 .article h5,
 .article h6 {
-  border-color: <?php echo $thx_key_060; ?>;
-  background: <?=$white?>;
+	border-color: <?php echo $thx_key_060; ?>;
+	background: <?=$white?>;
 }
 <?php
 ///////////////////////////////////////
@@ -268,7 +268,7 @@ h6,
 ul li {
 	list-style-type: none;
 }
-.content ul li:before {
+ul li:not(.blocks-gallery-item):before {
 	position: absolute;
 	left : 1em;
 	color: <?=$thx_key?>;
@@ -281,6 +281,9 @@ ul li {
 	color: <?=$thx_sub?>;
 	font-family: FontAwesome;
 	content: "\f105";
+}
+.slick-dots li:before {
+	display: none;
 }
 <?php
 ///////////////////////////////////////
