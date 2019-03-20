@@ -1,4 +1,16 @@
 <?php if ( !defined( 'ABSPATH' ) ) exit;
+///////////////////////////////////////
+// グローバル変数
+///////////////////////////////////////
+global
+	$is_safari,
+	$is_chrome,
+	$is_gecko,
+	// $is_IE,
+	// $is_opera,
+	// $is_NS4,
+	// $is_lynx,
+	$is_iphone;
 
 ///////////////////////////////////////
 // define
@@ -139,6 +151,12 @@ $thx_font_condense = 1.0;
 $thx_fw = $thx_fz * $thx_font_condense;
 $thx_fw_px = $thx_fw.'px';
 
+//サイドバーのサイズ比率
+$thx_sb_ratio = 0.875;
+
+//スニペットのフォントサイズ比率
+$thx_snipet_ratio = 0.75;
+
 ///////////////////////////////////////
 // メディアクエリ
 ///////////////////////////////////////
@@ -172,9 +190,6 @@ if (wp_is_mobile()) {
 
 }//wp_is_mobile()
 
-//サイドバーのサイズ比率
-$thx_sb_ratio = 0.875;
-
 ///////////////////////////////////////
 // カラム（.wp-block-columns）の指定
 ///////////////////////////////////////
@@ -185,7 +200,12 @@ $thx_clm_mg = $thx_fw * 2;
 ///////////////////////////////////////
 // Typography初期設定
 ///////////////////////////////////////
-$str_mg_shift = 1;
+if ($is_safari) {
+	$str_mg_shift = 1;
+} else {
+	$str_mg_shift = 0;
+}
+// $str_mg_shift = 1;
 // $str_mg_shift = $thx_fz / 20;
 $str_mg_top = floatval($thx_gls / 2 - $str_mg_shift);
 $str_mg_btm = floatval($thx_gls / 2 + $str_mg_shift);
