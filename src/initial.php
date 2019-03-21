@@ -268,21 +268,27 @@ h6,
 ul li {
 	list-style-type: none;
 }
-ul li:not(.blocks-gallery-item):before {
+ul li:before {
 	position: absolute;
 	left : 1em;
 	color: <?=$thx_key?>;
 	font-family: FontAwesome;
 	content: "\f0da";
 }
-.content li ul li:before {
+li ul li:before {
 	position: absolute;
 	left : 1em;
 	color: <?=$thx_sub?>;
 	font-family: FontAwesome;
 	content: "\f105";
 }
+.navi-in li:before {
+	display: none;
+}
 .slick-dots li:before {
+	display: none;
+}
+.wp-block-gallery li:before {
 	display: none;
 }
 <?php
