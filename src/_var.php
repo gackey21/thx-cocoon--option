@@ -89,7 +89,9 @@ if (get_go_to_top_background_color()){
 
 $thx_sub_090 = hsla_to_css_code($thx_sub_hsla,'90%');
 $thx_sub_080 = hsla_to_css_code($thx_sub_hsla,'80%');
+$thx_sub__080 = hsla_to_css_code($thx_sub_hsla, 1.0, 0.8);
 $thx_sub__050 = hsla_to_css_code($thx_sub_hsla, 1.0, 0.5);
+$thx_sub__020 = hsla_to_css_code($thx_sub_hsla, 1.0, 0.2);
 $thx_sub__000 = hsla_to_css_code($thx_sub_hsla, 1.0, 0.0);
 
 //カウンターカラー
