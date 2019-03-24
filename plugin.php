@@ -110,19 +110,37 @@ endif;//!function_exists( 'wp_add_css_custome_to_inline_style' )
 //親テーマstyle.cssの読み込み
 if ( !function_exists( 'wp_enqueue_style_theme_style' ) ):
 function wp_enqueue_style_theme_style(){
+	$preg_match_array = array(
+		'/.*?\n([^{}]*?article h2.*?})/uis',
+		'/.*?\n([^{}]*?article h3.*?})/uis',
+		'/.*?\n([^{}]*?article h4.*?})/uis',
+		'/.*?\n([^{}]*?article h5.*?})/uis',
+		'/.*?\n([^{}]*?article h6.*?})/uis',
+		'/.*?\n([^{}]*?kaerebalink-.*?})/uis'
+	);
 	//バッファリング
 	ob_start();
 	require (get_template_directory() . '/style.css');
 	$css = ob_get_clean();
-	//カエレバ削除
-	preg_match_all(
-		'/.*?\n([^{}]*?kaerebalink-.*?})/uis',
-		$css,
-		$match
-	);
-	foreach ($match[1] as $value) {
-		$css = str_replace($value,'',$css);
+	foreach ($preg_match_array as $preg_match) {
+		preg_match_all(
+			$preg_match,
+			$css,
+			$match
+		);
+		foreach ($match[1] as $value) {
+			$css = str_replace($value,'',$css);
+		}
 	}
+	//カエレバ削除
+	// preg_match_all(
+	// 	'/.*?\n([^{}]*?kaerebalink-.*?})/uis',
+	// 	$css,
+	// 	$match
+	// );
+	// foreach ($match[1] as $value) {
+	// 	$css = str_replace($value,'',$css);
+	// }
 	//ファイル書き出し
 	$path = __DIR__.'/dest/thx-style.css';
 	$tcc = new thx_Customize_Core();
