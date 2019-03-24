@@ -129,20 +129,6 @@ h6,
 }
 <?php
 ///////////////////////////////////////
-// 見出し
-?>
-.article h3 {
-	border: none;
-	background: linear-gradient(90deg, <?php echo $thx_key_080; ?>, #fff);
-}
-.article h4,
-.article h5,
-.article h6 {
-	border-color: <?php echo $thx_key_060; ?>;
-	background: <?=$white?>;
-}
-<?php
-///////////////////////////////////////
 // wrapカード
 ?>
 /* COLORSより */
