@@ -182,6 +182,10 @@ function wp_enqueue_style_theme_style(){
 		plugins_url( 'dest/thx-style.css', __FILE__ )
 	);
 	// wp_enqueue_style( THEME_NAME.'-style', $cocoon_css );
+	// $tcc = new thx_Customize_Core();
+	$tmp_php = $tcc -> file_to_str(__DIR__.'/src/child/tmp/header-container.php');
+	$path = get_stylesheet_directory().'/tmp/header-container.php';
+	$tcc -> str_to_file($path, $tmp_php);
 }
 endif;//!function_exists( 'wp_enqueue_style_theme_style' )
 
