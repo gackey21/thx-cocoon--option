@@ -129,6 +129,27 @@ h6,
 }
 <?php
 ///////////////////////////////////////
+// グローバルナビ
+?>
+#header-container .navi,
+#navi .navi-in>.menu-header .sub-menu {
+	<?=$thx_frost?>
+}
+#navi .navi-in a,
+#footer a {
+	color: <?=$thx_sub?>;
+	font-weight: 800;
+	white-space: nowrap;
+}
+#navi .navi-in a:hover,
+#footer a:hover {
+	background-color: <?=$thx_sub__080?>;
+}
+.menu-item-has-children > a {
+	font-size: 1.25em;
+}
+<?php
+///////////////////////////////////////
 // wrapカード
 ?>
 /* COLORSより */
