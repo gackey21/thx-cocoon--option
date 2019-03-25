@@ -90,12 +90,28 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 //設定変更CSSを読み込む
 if ( !function_exists( 'wp_add_css_custome_to_inline_style' ) ):
 function wp_add_css_custome_to_inline_style(){
+	$preg_match_array = array(
+		// '/.*?(}\.header{background).*?/uis'=>'.header-container-in{background'
+	);
 	ob_start();//バッファリング
 	get_template_part('tmp/css-custom');
 	thx_Cocoon_Option::minimum_css();
 	$css_custom = ob_get_clean();
 	//CSSの縮小化
 	$css_custom = minify_css($css_custom);
+	foreach ($preg_match_array as $preg_match => $replace) {
+		// var_dump($preg_match);
+		// var_dump($replace);
+		preg_match_all(
+			$preg_match,
+			$css_custom,
+			$match
+		);
+		// var_dump($match);
+		foreach ($match[1] as $value) {
+			$css_custom = str_replace($value,$replace,$css_custom);
+		}
+	}
 	//HTMLにインラインでスタイルを書く
 	if (get_skin_url()) {
 		//スキンがある場合
@@ -111,27 +127,41 @@ endif;//!function_exists( 'wp_add_css_custome_to_inline_style' )
 if ( !function_exists( 'wp_enqueue_style_theme_style' ) ):
 function wp_enqueue_style_theme_style(){
 	$preg_match_array = array(
-		'/.*?\n([^{}]*?article h2.*?})/uis',
-		'/.*?\n([^{}]*?article h3.*?})/uis',
-		'/.*?\n([^{}]*?article h4.*?})/uis',
-		'/.*?\n([^{}]*?article h5.*?})/uis',
-		'/.*?\n([^{}]*?article h6.*?})/uis',
-		'/.*?\n([^{}]*?kaerebalink-.*?})/uis'
+		// '/.*?(header {background-image: ).*?/uis'=>'header-container-in {background-image: ',
+		'/.*?\n([^{}]*?article h2.*?})/uis'=>'',
+		'/.*?\n([^{}]*?article h3.*?})/uis'=>'',
+		'/.*?\n([^{}]*?article h4.*?})/uis'=>'',
+		'/.*?\n([^{}]*?article h5.*?})/uis'=>'',
+		'/.*?\n([^{}]*?article h6.*?})/uis'=>'',
+		'/.*?\n([^{}]*?kaerebalink-.*?})/uis'=>''
 	);
 	//バッファリング
 	ob_start();
 	require (get_template_directory() . '/style.css');
 	$css = ob_get_clean();
-	foreach ($preg_match_array as $preg_match) {
+	foreach ($preg_match_array as $preg_match => $replace) {
+		// var_dump($preg_match);
+		// var_dump($replace);
 		preg_match_all(
 			$preg_match,
 			$css,
 			$match
 		);
+		// var_dump($match);
 		foreach ($match[1] as $value) {
-			$css = str_replace($value,'',$css);
+			$css = str_replace($value,$replace,$css);
 		}
 	}
+	// foreach ($preg_match_array as $preg_match) {
+	// 	preg_match_all(
+	// 		$preg_match,
+	// 		$css,
+	// 		$match
+	// 	);
+	// 	foreach ($match[1] as $value) {
+	// 		$css = str_replace($value,'',$css);
+	// 	}
+	// }
 	//カエレバ削除
 	// preg_match_all(
 	// 	'/.*?\n([^{}]*?kaerebalink-.*?})/uis',
