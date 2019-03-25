@@ -128,6 +128,11 @@ if ( !function_exists( 'wp_enqueue_style_theme_style' ) ):
 function wp_enqueue_style_theme_style(){
 	$preg_match_array = array(
 		// '/.*?(header {background-image: ).*?/uis'=>'header-container-in {background-image: ',
+		'/.*?\n([^{}]*?ff-meiryo.*?})/uis'=>
+		PHP_EOL.
+		'.ff-meiryo {'.PHP_EOL.
+		'  font-family: "Meiryo", "Hiragino Sans", "Hiragino Kaku Gothic Pro", "游ゴシック体", "Yu Gothic",sans-serif;'.PHP_EOL.
+		'}',
 		'/.*?\n([^{}]*?article h2.*?})/uis'=>'',
 		'/.*?\n([^{}]*?article h3.*?})/uis'=>'',
 		'/.*?\n([^{}]*?article h4.*?})/uis'=>'',
