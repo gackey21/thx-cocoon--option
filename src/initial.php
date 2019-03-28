@@ -69,11 +69,6 @@ body {
 ///////////////////////////////////////
 // フォント
 ?>
-body {
-	-webkit-text-size-adjust: 100%;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
 .site-name-text {
 	font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 	font-size: 3rem;
