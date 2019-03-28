@@ -135,8 +135,7 @@ h6,
 #navi .navi-in>.menu-header .sub-menu {
 	<?=$thx_frost?>
 }
-#navi .navi-in a,
-#footer a {
+#navi .navi-in a {
 	color: <?=$thx_sub?>;
 	font-weight: 800;
 	white-space: nowrap;
@@ -144,9 +143,19 @@ h6,
 #navi .navi-in a:hover,
 #footer a:hover {
 	background-color: <?=$thx_sub__080?>;
+	transition-duration: 0.3s;
 }
 .menu-item-has-children > a {
 	font-size: 1.25em;
+}
+.navi-in > ul > li:last-child .sub-menu {
+	right: 0;
+}
+.navi-in > ul > li:last-child .sub-menu .menu-item-has-children {
+	position: relative;
+}
+.navi-in > ul .sub-menu {
+	border: 1px solid <?=$thx_sub?>;
 }
 <?php
 ///////////////////////////////////////
