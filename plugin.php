@@ -69,6 +69,9 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 		//amp_all_cssにecho
 		public function echo_amp_css($css) {
 			ob_start();
+			foreach (thx_Customize_Core::$push_css_url as $url) {
+				$css .= css_url_to_css_minify_code($url);
+			}
 			thx_Cocoon_Option::minimum_css();
 			$minimum = ob_get_clean();
 			$css .= minify_css($minimum);
