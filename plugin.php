@@ -37,14 +37,18 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 		static $push_css_dir = array();
 		static $push_amp_dir = array();
 		static $css_dir = __DIR__.'/src/css/';
+
 		public function __construct() {
 			$thx_co_option = get_option('thx_co_option');
 
 			//管理画面の設定
 			add_action('admin_menu', array($this, 'add_sub_menu'));
 			add_action('admin_init', 'thx_cocoon_option_settings_init');
+
 			//amp_all_cssにecho_amp_css()をフック
 			add_filter('amp_all_css', array( $this, 'echo_amp_css' ));
+
+			//追加関数の読み込み
 			require_once( __DIR__.'/src/hsla.php' );//hsla変調
 			require_once( __DIR__.'/src/is-mobile.php' );//スマホ判別
 
@@ -55,6 +59,7 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 			if ($thx_co_option['equalizing_thumbnail_margin_in_entry_card']['amp'] == 1) {
 				$this::$push_amp_dir[] = $this::$css_dir.'entry-card-margin.php';
 			}
+
 			add_action('wp_enqueue_scripts', array($this, 'push_url'));
 		}//__construct()
 
@@ -68,6 +73,8 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 				$tCC -> enqueue_file_script($url);
 			}
 		}//push_url()
+
+		// static $tcc = new thx_Customize_Core();
 		static $_var = __DIR__.'/src/_var.php';//変数ファイル
 		static $src = __DIR__.'/src/';
 
@@ -182,16 +189,6 @@ function wp_enqueue_style_theme_style(){
 			$css = str_replace($value,$replace,$css);
 		}
 	}
-	// foreach ($preg_match_array as $preg_match) {
-	// 	preg_match_all(
-	// 		$preg_match,
-	// 		$css,
-	// 		$match
-	// 	);
-	// 	foreach ($match[1] as $value) {
-	// 		$css = str_replace($value,'',$css);
-	// 	}
-	// }
 	//ファイル書き出し
 	$path = __DIR__.'/dest/thx-style.css';
 	$tcc = new thx_Customize_Core();
