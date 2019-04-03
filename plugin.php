@@ -35,13 +35,10 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 			//管理画面の設定
 			add_action('admin_menu', array($this, 'add_sub_menu'));
 			add_action('admin_init', 'thx_cocoon_option_settings_init');
+			//amp_all_cssにecho_amp_css()をフック
+			add_filter('amp_all_css', array( $this, 'echo_amp_css' ));
 			require_once( __DIR__.'/src/hsla.php' );//hsla変調
 			require_once( __DIR__.'/src/is-mobile.php' );//スマホ判別
-			//amp_all_cssにecho_amp_css()をフック
-			add_filter(
-				'amp_all_css',
-				array( $this, 'echo_amp_css' )
-			);
 		}//__construct()
 
 		static $_var = __DIR__.'/src/_var.php';//変数ファイル
