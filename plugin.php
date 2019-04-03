@@ -126,7 +126,6 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 		//ミニマムなcss
 		public static function minimum_css() {
 			require( thx_Cocoon_Option::$_var );
-			// require_once( thx_Cocoon_Option::$src.'initial.php' );
 			require_once( thx_Typography::$css_amp_dir.'_typography.php' );
 			require_once( thx_Typography::$css_amp_dir.'amp.php' );
 			require_once( thx_Typography::$css_amp_dir.'h.php' );
@@ -150,7 +149,7 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 		}
 	}//class
 }//! class_exists
-//設定変更CSSを読み込む
+//HTMLにインラインでスタイルを書く
 if ( !function_exists( 'wp_add_css_custome_to_inline_style' ) ):
 function wp_add_css_custome_to_inline_style(){
 	$preg_match_array = array(
@@ -190,7 +189,7 @@ function wp_add_css_custome_to_inline_style(){
 }
 endif;//!function_exists( 'wp_add_css_custome_to_inline_style' )
 
-//親テーマstyle.cssの読み込み
+//親テーマstyle.cssの読み込み＆置き換え
 if ( !function_exists( 'wp_enqueue_style_theme_style' ) ):
 function wp_enqueue_style_theme_style(){
 	$preg_match_array = array(
