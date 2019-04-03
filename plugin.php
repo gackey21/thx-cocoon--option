@@ -68,6 +68,14 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 				$this::$push_css_dir[] = $this::$css_dir.'iwe-css.php';
 			}
 
+			//ハイライト表示を横スクロールに変更
+			if ($thx_co_option['pre']['amp'] == 1) {
+				$this::$push_amp_dir[] = $this::$css_dir.'pre.php';
+			}
+			if ($thx_co_option['pre']['style'] == 1) {
+				$this::$push_css_dir[] = $this::$css_dir.'pre.php';
+			}
+
 			add_action('wp_enqueue_scripts', array($this, 'push_url'));
 		}//__construct()
 
