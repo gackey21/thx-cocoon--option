@@ -91,7 +91,7 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 		}//push_url()
 
 		// static $tcc = new thx_Customize_Core();
-		static $_var = __DIR__.'/src/_var.php';//変数ファイル
+		static $_var = __DIR__.'/src/css/_var.php';//変数ファイル
 		static $src = __DIR__.'/src/';
 
 		//サブメニュー作成
@@ -123,6 +123,7 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 				$css .= css_url_to_css_minify_code($url);
 			}
 			thx_Cocoon_Option::minimum_css();
+			require( thx_Cocoon_Option::$_var );
 			foreach (thx_Cocoon_Option::$push_amp_dir as $dir) {
 				require_once( $dir );
 			}
@@ -141,6 +142,7 @@ function wp_add_css_custome_to_inline_style(){
 	ob_start();//バッファリング
 	get_template_part('tmp/css-custom');
 	thx_Cocoon_Option::minimum_css();
+	require( thx_Cocoon_Option::$_var );
 	foreach (thx_Cocoon_Option::$push_css_dir as $dir) {
 		require_once( $dir );
 	}
