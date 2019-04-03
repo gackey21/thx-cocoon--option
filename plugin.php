@@ -100,6 +100,9 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 				$css .= css_url_to_css_minify_code($url);
 			}
 			thx_Cocoon_Option::minimum_css();
+			foreach (thx_Cocoon_Option::$push_amp_dir as $dir) {
+				require_once( $dir );
+			}
 			$minimum = ob_get_clean();
 			$css .= minify_css($minimum);
 			echo $css;
@@ -115,6 +118,9 @@ function wp_add_css_custome_to_inline_style(){
 	ob_start();//バッファリング
 	get_template_part('tmp/css-custom');
 	thx_Cocoon_Option::minimum_css();
+	foreach (thx_Cocoon_Option::$push_css_dir as $dir) {
+		require_once( $dir );
+	}
 	$css_custom = ob_get_clean();
 	//CSSの縮小化
 	$css_custom = minify_css($css_custom);
