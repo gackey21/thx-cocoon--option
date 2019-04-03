@@ -37,6 +37,7 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 		static $push_css_dir = array();
 		static $push_amp_dir = array();
 		static $css_dir = __DIR__.'/src/css/';
+		static $dest_dir = __DIR__.'/dest/';
 
 		public function __construct() {
 			$thx_co_option = get_option('thx_co_option');
@@ -84,6 +85,14 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 				$this::$push_css_dir[] = $this::$css_dir.'pre.php';
 			}
 
+			//phpでcssを記述
+			if ($thx_co_option['php_css']['amp'] == 1) {
+				$this::$push_amp_dir[] = $this::$dest_dir.'thx-phped.css';
+			}
+			if ($thx_co_option['php_css']['style'] == 1) {
+				$this::$push_css_dir[] = $this::$dest_dir.'thx-phped.css';
+			}
+
 			add_action('wp_enqueue_scripts', array($this, 'push_url'));
 		}//__construct()
 
@@ -117,7 +126,7 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 		//ミニマムなcss
 		public static function minimum_css() {
 			require( thx_Cocoon_Option::$_var );
-			require_once( thx_Cocoon_Option::$src.'initial.php' );
+			// require_once( thx_Cocoon_Option::$src.'initial.php' );
 			require_once( thx_Typography::$css_amp_dir.'_typography.php' );
 			require_once( thx_Typography::$css_amp_dir.'amp.php' );
 			require_once( thx_Typography::$css_amp_dir.'h.php' );

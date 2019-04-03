@@ -18,6 +18,13 @@ function thx_cocoon_option_form() {
 			<div class="updated notice is-dismissible">
 				<p><strong>設定を保存しました。</strong></p>
 			</div>
+		<?php
+		$tcc = new thx_Customize_Core();
+		$thx_co_option = get_option('thx_co_option');
+		$css = $thx_co_option['php_css_array'];
+		$path = thx_Cocoon_Option::$dest_dir.'thx-phped.css';
+		$tcc -> str_to_file($path, $css);
+		?>
 		<?php endif; ?>
 	<?php endif;//isset ?>
 	<?php
@@ -127,6 +134,35 @@ function thx_cocoon_option_settings_init() {
 				),
 			),
 			'add' => '',
+		)
+	);
+
+	//phpでcssを記述
+	add_settings_field(
+		'thx_php_css',
+		'phpでcssを記述',
+		'thx_checkbox_callback',
+		'thx_cocoon_option_section',
+		'thx_cocoon_option_settings_section',
+		array(
+			'option_name' => 'thx_co_option',
+			'option_array_name' => 'php_css',
+			'comment' => array(
+				'amp' => array(
+					'ampのスタイルに適用する' => '1',
+				),
+				'style' => array(
+					'通常のスタイルに適用する' => '1',
+				),
+			),
+			'add' => 'thx_textarea_callback',
+			'arg' => array(
+				'option_name' => 'thx_co_option',
+				'option_array_name' => 'php_css_array',
+				'comment' => '',
+				'placeholder' => '',
+				'add' => '',
+			),
 		)
 	);
 }//thx_cocoon_option_settings_init()
