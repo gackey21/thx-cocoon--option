@@ -60,6 +60,14 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 				$this::$push_amp_dir[] = $this::$css_dir.'entry-card-margin.php';
 			}
 
+			//画像の囲み効果（ブロックエディタ）
+			if ($thx_co_option['iwe_block_editor']['amp'] == 1) {
+				$this::$push_amp_dir[] = $this::$css_dir.'iwe-amp.php';
+			}
+			if ($thx_co_option['iwe_block_editor']['style'] == 1) {
+				$this::$push_css_dir[] = $this::$css_dir.'iwe-css.php';
+			}
+
 			add_action('wp_enqueue_scripts', array($this, 'push_url'));
 		}//__construct()
 
