@@ -161,6 +161,7 @@ function thx_cocoon_option_settings_init() {
 				'option_array_name' => 'php_css_array',
 				'comment' => '',
 				'placeholder' => '',
+				'rows' => '20',
 				'add' => '',
 			),
 		)
