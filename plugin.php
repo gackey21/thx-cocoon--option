@@ -60,6 +60,14 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 				$this::$push_css_dir[] = $this::$css_dir.'entry-card-margin.php';
 			}
 
+			//カードをホバー（COLORS風）
+			if ($thx_co_option['wrap_hover']['amp'] == 1) {
+				$this::$push_amp_dir[] = $this::$css_dir.'wrap-hover.php';
+			}
+			if ($thx_co_option['wrap_hover']['style'] == 1) {
+				$this::$push_css_dir[] = $this::$css_dir.'wrap-hover.php';
+			}
+
 			//画像の囲み効果（ブロックエディタ）
 			if ($thx_co_option['iwe_block_editor']['amp'] == 1) {
 				$this::$push_amp_dir[] = $this::$css_dir.'iwe-amp.php';
