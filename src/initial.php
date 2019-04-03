@@ -70,7 +70,6 @@ body {
 // フォント
 ?>
 .site-name-text {
-	font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 	font-size: 3rem;
 	font-weight: 800;
 	line-height: 1.5em;
