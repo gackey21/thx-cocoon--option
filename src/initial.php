@@ -60,6 +60,11 @@ body {
 .article h6:hover::after {
 	color: <?php echo $thx_sub__000; ?>;
 }
+/* 線色サブカラー */
+.article .toc,
+.a-wrap .blogcard {
+	border-color: <?=$thx_sub?>;
+}
 <?php
 ///////////////////////////////////////
 // 好みのカスタマイズ
@@ -168,11 +173,6 @@ h6,
 	<?=$thx_frost_hover?>
 	box-shadow: 0 0 8px rgba(0, 0, 0, 0.24);
 	transition-duration: 0.3s;
-}
-/* 線色サブカラー */
-.article .toc,
-.a-wrap .blogcard {
-	border-color: <?=$thx_sub?>;
 }
 <?php
 ///////////////////////////////////////
