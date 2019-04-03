@@ -31,6 +31,10 @@ License: GPL2
 if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 	class thx_Cocoon_Option {
 		public function __construct() {
+
+			//管理画面の設定
+			add_action('admin_menu', array($this, 'add_sub_menu'));
+			add_action('admin_init', 'thx_cocoon_option_settings_init');
 			require_once( __DIR__.'/src/hsla.php' );//hsla変調
 			require_once( __DIR__.'/src/is-mobile.php' );//スマホ判別
 			//amp_all_cssにecho_amp_css()をフック
@@ -42,6 +46,18 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 
 		static $_var = __DIR__.'/src/_var.php';//変数ファイル
 		static $src = __DIR__.'/src/';
+
+		//サブメニュー作成
+		function add_sub_menu() {
+			add_submenu_page(
+				'thx-jp-customize-core',
+				'thx.jp/ Cocoon Option の設定',
+				'Cocoon Option',
+				'manage_options',
+				'thx-jp-cocoon-option',
+				'thx_cocoon_option_form'
+			);
+		}
 
 		//ミニマムなcss
 		public static function minimum_css() {
@@ -163,5 +179,6 @@ function wp_enqueue_style_theme_style(){
 	$tcc -> str_to_file($path, $tmp_php);
 }
 endif;//!function_exists( 'wp_enqueue_style_theme_style' )
+require_once('src/php/menu.php');
 
 new thx_Cocoon_Option;
