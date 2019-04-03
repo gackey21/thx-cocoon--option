@@ -30,7 +30,15 @@ License: GPL2
 <?php
 if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 	class thx_Cocoon_Option {
+		//読み込むurl
+		static $push_js_url = array();
+		static $push_css_url = array();
+		static $push_amp_url = array();
+		static $push_css_dir = array();
+		static $push_amp_dir = array();
+		static $css_dir = __DIR__.'/src/css/';
 		public function __construct() {
+			$thx_co_option = get_option('thx_co_option');
 
 			//管理画面の設定
 			add_action('admin_menu', array($this, 'add_sub_menu'));
@@ -39,8 +47,19 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 			add_filter('amp_all_css', array( $this, 'echo_amp_css' ));
 			require_once( __DIR__.'/src/hsla.php' );//hsla変調
 			require_once( __DIR__.'/src/is-mobile.php' );//スマホ判別
+			add_action('wp_enqueue_scripts', array($this, 'push_url'));
 		}//__construct()
 
+		//キューイング
+		public function push_url() {
+			$tCC = new thx_Customize_Core();
+			foreach ($this::$push_css_url as $url) {
+				$tCC -> enqueue_file_style($url);
+			}
+			foreach ($this::$push_js_url as $url) {
+				$tCC -> enqueue_file_script($url);
+			}
+		}//push_url()
 		static $_var = __DIR__.'/src/_var.php';//変数ファイル
 		static $src = __DIR__.'/src/';
 
