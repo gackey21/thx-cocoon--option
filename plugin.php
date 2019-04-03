@@ -47,6 +47,14 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 			add_filter('amp_all_css', array( $this, 'echo_amp_css' ));
 			require_once( __DIR__.'/src/hsla.php' );//hsla変調
 			require_once( __DIR__.'/src/is-mobile.php' );//スマホ判別
+
+			//エントリーカード・サムネイルの余白を均等にする
+			if ($thx_co_option['equalizing_thumbnail_margin_in_entry_card']['style'] == 1) {
+				$this::$push_css_dir[] = $this::$css_dir.'entry-card-margin.php';
+			}
+			if ($thx_co_option['equalizing_thumbnail_margin_in_entry_card']['amp'] == 1) {
+				$this::$push_amp_dir[] = $this::$css_dir.'entry-card-margin.php';
+			}
 			add_action('wp_enqueue_scripts', array($this, 'push_url'));
 		}//__construct()
 
