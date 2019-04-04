@@ -36,6 +36,8 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 		static $push_amp_url = array();
 		static $push_css_dir = array();
 		static $push_amp_dir = array();
+		static $replace_cocoon_css;
+		static $replace_cocoon_amp;
 		static $css_dir = __DIR__.'/src/css/';
 		static $dest_dir = __DIR__.'/dest/';
 
@@ -46,8 +48,11 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 			add_action('admin_menu', array($this, 'add_sub_menu'));
 			add_action('admin_init', 'thx_cocoon_option_settings_init');
 
-			//amp_all_cssにecho_amp_css()をフック
-			add_filter('amp_all_css', array( $this, 'echo_amp_css' ));
+			//amp_parent_cssにecho_amp_parent_css()をフック
+			// add_filter('amp_parent_css', array( $this, 'echo_amp_parent_css' ));
+			add_filter('amp_parent_css', 'echo_amp_parent_css');
+			//amp_all_cssにecho_amp_all_css()をフック
+			add_filter('amp_all_css', array( $this, 'echo_amp_all_css' ));
 
 			//追加関数の読み込み
 			require_once( __DIR__.'/src/hsla.php' );//hsla変調
@@ -93,6 +98,14 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 				$this::$push_css_dir[] = $this::$dest_dir.'thx-phped.css';
 			}
 
+			//親スタイルの変更
+			if ($thx_co_option['replace_cocoon_style']['amp'] == 1) {
+				$this::$replace_cocoon_amp = $thx_co_option['replace_cocoon_style_array'];
+			}
+			if ($thx_co_option['replace_cocoon_style']['style'] == 1) {
+				$this::$replace_cocoon_css = $thx_co_option['replace_cocoon_style_array'];
+			}
+
 			add_action('wp_enqueue_scripts', array($this, 'push_url'));
 		}//__construct()
 
@@ -133,7 +146,7 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 		}
 
 		//amp_all_cssにecho
-		public function echo_amp_css($css) {
+		public static function echo_amp_all_css($css) {
 			ob_start();
 			foreach (thx_Customize_Core::$push_css_url as $url) {
 				$css .= css_url_to_css_minify_code($url);
@@ -189,57 +202,7 @@ function wp_add_css_custome_to_inline_style(){
 }
 endif;//!function_exists( 'wp_add_css_custome_to_inline_style' )
 
-//親テーマstyle.cssの読み込み＆置き換え
-if ( !function_exists( 'wp_enqueue_style_theme_style' ) ):
-function wp_enqueue_style_theme_style(){
-	$preg_match_array = array(
-		// '/.*?(header {background-image: ).*?/uis'=>'header-container-in {background-image: ',
-		'/.*?\n([^{}]*?ff-meiryo.*?})/uis'=>
-		PHP_EOL.
-		'.ff-meiryo {'.PHP_EOL.
-		'  font-family: "Meiryo", "Hiragino Sans", "Hiragino Kaku Gothic Pro", "游ゴシック体", "Yu Gothic",sans-serif;'.PHP_EOL.
-		'}',
-		'/.*?\n([^{}]*?article h2.*?})/uis'=>'',
-		'/.*?\n([^{}]*?article h3.*?})/uis'=>'',
-		'/.*?\n([^{}]*?article h4.*?})/uis'=>'',
-		'/.*?\n([^{}]*?article h5.*?})/uis'=>'',
-		'/.*?\n([^{}]*?article h6.*?})/uis'=>'',
-		'/.*?\n([^{}]*?kaerebalink-.*?})/uis'=>''
-	);
-	//バッファリング
-	ob_start();
-	require (get_template_directory() . '/style.css');
-	$css = ob_get_clean();
-	foreach ($preg_match_array as $preg_match => $replace) {
-		// var_dump($preg_match);
-		// var_dump($replace);
-		preg_match_all(
-			$preg_match,
-			$css,
-			$match
-		);
-		// var_dump($match);
-		foreach ($match[1] as $value) {
-			$css = str_replace($value,$replace,$css);
-		}
-	}
-	//ファイル書き出し
-	$path = __DIR__.'/dest/thx-style.css';
-	$tcc = new thx_Customize_Core();
-	$tcc -> str_to_file($path, $css);
-	// $cocoon_css = get_template_directory_uri() . '/style.css';
-	// var_dump($cocoon_css);
-	wp_enqueue_style(
-		THEME_NAME.'-style',
-		plugins_url( 'dest/thx-style.css', __FILE__ )
-	);
-	// wp_enqueue_style( THEME_NAME.'-style', $cocoon_css );
-	// $tcc = new thx_Customize_Core();
-	$tmp_php = $tcc -> file_to_str(__DIR__.'/src/child/tmp/header-container.php');
-	$path = get_stylesheet_directory().'/tmp/header-container.php';
-	$tcc -> str_to_file($path, $tmp_php);
-}
-endif;//!function_exists( 'wp_enqueue_style_theme_style' )
 require_once('src/php/menu.php');
+require_once('src/php/cocoon-style.php');
 
 new thx_Cocoon_Option;
