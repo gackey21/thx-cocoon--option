@@ -137,12 +137,13 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 		}
 
 		//ミニマムなcss
-		public static function minimum_css() {
-			require( thx_Cocoon_Option::$_var );
-			require_once( thx_Typography::$css_amp_dir.'_typography.php' );
-			require_once( thx_Typography::$css_amp_dir.'amp.php' );
-			require_once( thx_Typography::$css_amp_dir.'h.php' );
-			require_once( thx_Typography::$css_amp_dir.'kaereba.php' );
+		// public static function minimum_css() {
+			// require( thx_Cocoon_Option::$_var );
+			// require_once( thx_Typography::$css_amp_dir.'_typography.php' );
+			// require_once( thx_Typography::$css_amp_dir.'amp.php' );
+			// require_once( thx_Typography::$css_amp_dir.'h.php' );
+			// require_once( thx_Typography::$css_amp_dir.'kaereba.php' );
+		// }
 		}
 
 		//amp_all_cssにecho
@@ -151,7 +152,7 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 			foreach (thx_Customize_Core::$push_css_url as $url) {
 				$css .= css_url_to_css_minify_code($url);
 			}
-			thx_Cocoon_Option::minimum_css();
+			// thx_Cocoon_Option::minimum_css();
 			require( thx_Cocoon_Option::$_var );
 			foreach (thx_Cocoon_Option::$push_amp_dir as $dir) {
 				require_once( $dir );
@@ -170,7 +171,7 @@ function wp_add_css_custome_to_inline_style(){
 	);
 	ob_start();//バッファリング
 	get_template_part('tmp/css-custom');
-	thx_Cocoon_Option::minimum_css();
+	// thx_Cocoon_Option::minimum_css();
 	require( thx_Cocoon_Option::$_var );
 	foreach (thx_Cocoon_Option::$push_css_dir as $dir) {
 		require_once( $dir );
