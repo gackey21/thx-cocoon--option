@@ -36,13 +36,5 @@ function wp_enqueue_style_theme_style(){
 		THEME_NAME.'-style',
 		plugins_url( '../../dest/thx-style.css', __FILE__ )
 	);
-
-	// ヘッダー部の書き換えβ
-	$tmp_php = thx_Customize_Core::file_to_str(__DIR__.'/../../src/child/tmp/header-container.php');
-	$path = get_stylesheet_directory().'/tmp/header-container.php';
-	thx_Customize_Core::str_to_file($path, $tmp_php);
-	// $tmp_php = $tcc -> file_to_str(__DIR__.'/src/child/tmp/css-custom.php');
-	// $path = get_stylesheet_directory().'/tmp/css-custom.php';
-	// $tcc -> str_to_file($path, $tmp_php);
 }
 endif;//!function_exists( 'wp_enqueue_style_theme_style' )
