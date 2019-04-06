@@ -55,8 +55,8 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 			add_filter('amp_all_css', array( $this, 'echo_amp_all_css' ));
 
 			//追加関数の読み込み
-			require_once( __DIR__.'/src/hsla.php' );//hsla変調
-			require_once( __DIR__.'/src/is-mobile.php' );//スマホ判別
+			require_once( __DIR__.'/src/php/hsla.php' );//hsla変調
+			require_once( __DIR__.'/src/php/is-mobile.php' );//スマホ判別
 
 			//エントリーカード・サムネイルの余白を均等にする
 			if ($thx_co_option['equalizing_thumbnail_margin_in_entry_card']['amp'] == 1) {
