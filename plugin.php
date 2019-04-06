@@ -48,6 +48,12 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 			add_action('admin_menu', array($this, 'add_sub_menu'));
 			add_action('admin_init', 'thx_cocoon_option_settings_init');
 
+			//プラグインメニューの設定
+			add_filter(
+				'plugin_action_links_' . plugin_basename( __FILE__ ),
+				array( $this, 'add_action_links' )
+			);
+
 			//amp_parent_cssにecho_amp_parent_css()をフック
 			// add_filter('amp_parent_css', array( $this, 'echo_amp_parent_css' ));
 			add_filter('amp_parent_css', 'echo_amp_parent_css');
@@ -119,6 +125,13 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 				$tCC -> enqueue_file_script($url);
 			}
 		}//push_url()
+		//設定リンク追加
+		public static function add_action_links ( $links ) {
+			$add_link = '<a href="admin.php?page=thx-jp-cocoon-option">設定</a>';
+			array_unshift( $links, $add_link);
+			return $links;
+		}
+
 
 		// static $tcc = new thx_Customize_Core();
 		static $_var = __DIR__.'/src/css/_var.php';//変数ファイル
