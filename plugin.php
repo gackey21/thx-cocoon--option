@@ -194,9 +194,11 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 
 		//amp_all_cssにecho
 		public static function echo_amp_all_css($css) {
+			//tCCのスタイルを追加
 			foreach (thx_Customize_Core::$push_css_url as $url) {
 				$css .= css_url_to_css_minify_code($url);
 			}
+			//バッファ開始
 			ob_start();
 			require( thx_Cocoon_Option::$_var );
 			foreach (thx_Cocoon_Option::$push_amp_dir as $dir) {
