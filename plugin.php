@@ -110,7 +110,7 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 		}//__construct()
 
 		//キューイング
-		public function push_url() {
+		public static function push_url() {
 			$tCC = new thx_Customize_Core();
 			foreach ($this::$push_css_url as $url) {
 				$tCC -> enqueue_file_style($url);
@@ -125,7 +125,7 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 		static $src = __DIR__.'/src/';
 
 		//サブメニュー作成
-		function add_sub_menu() {
+		static function add_sub_menu() {
 			add_submenu_page(
 				'thx-jp-customize-core',
 				'thx.jp/ Cocoon Option の設定',
