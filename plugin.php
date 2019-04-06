@@ -201,19 +201,8 @@ function wp_add_css_custome_to_inline_style(){
 	}
 	$css_custom = ob_get_clean();
 	//CSSの縮小化
-	$css_custom = minify_css($css_custom);
-	foreach ($preg_match_array as $preg_match => $replace) {
-		// var_dump($preg_match);
-		// var_dump($replace);
-		preg_match_all(
-			$preg_match,
-			$css_custom,
-			$match
-		);
-		// var_dump($match);
-		foreach ($match[1] as $value) {
-			$css_custom = str_replace($value,$replace,$css_custom);
-		}
+	if (isset($preg_match_array)) {
+		$css_custom = thx_Customize_Core::str_preg_replace($css_custom, $preg_match_array);
 	}
 	//HTMLにインラインでスタイルを書く
 	if (get_skin_url()) {
