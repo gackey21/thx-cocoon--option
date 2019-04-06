@@ -215,3 +215,14 @@ require_once('src/php/cocoon-style.php');
 	// $tcc -> str_to_file($path, $tmp_php);
 
 new thx_Cocoon_Option;
+
+// ampの作られ方
+// amp.phpにて
+// <style amp-custom>
+// get_template_directory_uri().'/amp.css';
+// IcoMoonのスタイル
+// スキンのスタイル
+// get_template_part('tmp/css-custom');
+// 子テーマのスタイル
+// 投稿・固定ページに記入されているカスタムCSS
+// </style>
