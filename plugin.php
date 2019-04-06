@@ -54,6 +54,11 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 				array( $this, 'add_action_links' )
 			);
 
+			//アンインストール
+			if(function_exists('register_uninstall_hook')) {
+				register_uninstall_hook (__FILE__, 'thx_Cocoon_Option::thx_co_uninstall');
+			}
+
 			//amp_parent_cssにecho_amp_parent_css()をフック
 			// add_filter('amp_parent_css', array( $this, 'echo_amp_parent_css' ));
 			add_filter('amp_parent_css', 'echo_amp_parent_css');
@@ -125,6 +130,11 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 				$tCC -> enqueue_file_script($url);
 			}
 		}//push_url()
+		//アインインストール時にオプション削除
+		static function thx_co_uninstall() {
+			delete_option('thx_co_option');
+		}
+
 		//設定リンク追加
 		public static function add_action_links ( $links ) {
 			$add_link = '<a href="admin.php?page=thx-jp-cocoon-option">設定</a>';
