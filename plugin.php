@@ -60,10 +60,11 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 			}
 
 			//amp_parent_cssにecho_amp_parent_css()をフック
-			// add_filter('amp_parent_css', array( $this, 'echo_amp_parent_css' ));
-			add_filter('amp_parent_css', 'echo_amp_parent_css');
+			add_filter('amp_parent_css', array( 'thx_Cocoon_amp', 'echo_amp_parent_css' ));
+			// add_filter('amp_parent_css', 'thx_echo_amp_parent_css');
 			//amp_all_cssにecho_amp_all_css()をフック
-			add_filter('amp_all_css', array( $this, 'echo_amp_all_css' ));
+			// add_filter('amp_all_css', array( $this, 'echo_amp_all_css' ));
+			add_filter('amp_all_css', array( 'thx_Cocoon_amp', 'echo_amp_all_css' ));
 
 			//追加関数の読み込み
 			require_once( __DIR__.'/src/php/hsla.php' );//hsla変調
@@ -191,23 +192,6 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 		// 	// $css_custom = str_replace('游ゴシック体','',$css_custom);
 		// 	return $css_custom;
 		// }
-
-		//amp_all_cssにecho
-		public static function echo_amp_all_css($css) {
-			//tCCのスタイルを追加
-			foreach (thx_Customize_Core::$push_css_url as $url) {
-				$css .= css_url_to_css_minify_code($url);
-			}
-			//バッファ開始
-			ob_start();
-			require( thx_Cocoon_Option::$_var );
-			foreach (thx_Cocoon_Option::$push_amp_dir as $dir) {
-				require_once( $dir );
-			}
-			$minimum = ob_get_clean();
-			$css .= minify_css($minimum);
-			echo $css;
-		}
 	}//class
 }//! class_exists
 //HTMLにインラインでスタイルを書く
