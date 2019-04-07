@@ -194,38 +194,6 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 		// }
 	}//class
 }//! class_exists
-//HTMLにインラインでスタイルを書く
-if ( !function_exists( 'wp_add_css_custome_to_inline_style' ) ):
-function wp_add_css_custome_to_inline_style(){
-	// $preg_match_array = array(
-	// 	// '/.*?(}\.header{background).*?/uis'=>'.header-container-in{background'
-	// );
-	ob_start();//バッファリング
-	get_template_part('tmp/css-custom');
-	// thx_Cocoon_Option::minimum_css();
-	require( thx_Cocoon_Option::$_var );
-	// foreach (thx_Cocoon_Option::$push_amp_dir as $dir) {
-	// 	require_once( $dir );
-	// }
-	foreach (thx_Cocoon_Option::$push_css_dir as $dir) {
-		require_once( $dir );
-	}
-	$css_custom = ob_get_clean();
-	// if (isset($preg_match_array)) {
-	// 	$css_custom = thx_Customize_Core::str_preg_replace($css_custom, $preg_match_array);
-	// }
-	// CSSの縮小化
-	$css_custom = minify_css($css_custom);
-	//HTMLにインラインでスタイルを書く
-	if (get_skin_url()) {
-		//スキンがある場合
-		wp_add_inline_style( THEME_NAME.'-skin-style', $css_custom );
-	} else {
-		//スキンを使用しない場合
-		wp_add_inline_style( THEME_NAME.'-style', $css_custom );
-	}
-}
-endif;//!function_exists( 'wp_add_css_custome_to_inline_style' )
 
 require_once('src/php/menu.php');
 require_once('src/php/cocoon-style.php');
