@@ -117,12 +117,12 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 		}//__construct()
 
 		//アインインストール時にオプション削除
-		static function thx_co_uninstall() {
+		private static function thx_co_uninstall() {
 			delete_option('thx_co_option');
 		}
 
 		//設定リンク追加
-		public static function add_action_links ( $links ) {
+		static function add_action_links ( $links ) {
 			$add_link = '<a href="admin.php?page=thx-jp-cocoon-option">設定</a>';
 			array_unshift( $links, $add_link);
 			return $links;
