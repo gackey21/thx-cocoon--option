@@ -31,9 +31,6 @@ License: GPL2
 if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 	class thx_Cocoon_Option {
 		//読み込むurl
-		// static $push_js_url = array();
-		// static $push_css_url = array();
-		// static $push_amp_url = array();
 		static $push_css_dir = array();
 		static $push_amp_dir = array();
 		static $replace_cocoon_css;
@@ -59,11 +56,9 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 				register_uninstall_hook (__FILE__, 'thx_Cocoon_Option::thx_co_uninstall');
 			}
 
-			//amp_parent_cssにecho_amp_parent_css()をフック
+			//親amp.cssの変更＆出力
 			add_filter('amp_parent_css', array( 'thx_Cocoon_amp', 'echo_amp_parent_css' ));
-			// add_filter('amp_parent_css', 'thx_echo_amp_parent_css');
-			//amp_all_cssにecho_amp_all_css()をフック
-			// add_filter('amp_all_css', array( $this, 'echo_amp_all_css' ));
+			//カスタマイズampの出力
 			add_filter('amp_all_css', array( 'thx_Cocoon_amp', 'echo_amp_all_css' ));
 
 			//追加関数の読み込み
@@ -133,18 +128,6 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 			return $links;
 		}
 
-		// //キューイング
-		// public static function push_url() {
-		// 	$tCC = new thx_Customize_Core();
-		// 	foreach ($this::$push_css_url as $url) {
-		// 		$tCC -> enqueue_file_style($url);
-		// 	}
-		// 	foreach ($this::$push_js_url as $url) {
-		// 		$tCC -> enqueue_file_script($url);
-		// 	}
-		// }//push_url()
-
-		// static $tcc = new thx_Customize_Core();
 		static $_var = __DIR__.'/src/css/_var.php';//変数ファイル
 		static $src = __DIR__.'/src/';
 
@@ -159,39 +142,6 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 				'thx_cocoon_option_form'
 			);
 		}
-
-		// //ミニマムなcss
-		// public static function minimum_css() {
-		// 	require( thx_Cocoon_Option::$_var );
-		// 	require_once( thx_Typography::$css_amp_dir.'_typography.php' );
-		// 	require_once( thx_Typography::$css_amp_dir.'amp.php' );
-		// 	require_once( thx_Typography::$css_amp_dir.'h.php' );
-		// 	require_once( thx_Typography::$css_amp_dir.'kaereba.php' );
-		// }
-
-		// //amp_all_cssにecho
-		// public static function replace_css_custom($css_custom) {
-		// 	// var_dump($css_custom);
-		// 	$preg_match_array = json_decode( thx_Cocoon_Option::$replace_cocoon_amp , true ) ;
-		// 	// var_dump($preg_match_array);
-		// 	if (isset($preg_match_array)) {
-		// 		foreach ($preg_match_array as $preg_match => $replace) {
-		// 			// var_dump($preg_match);
-		// 			// var_dump($replace);
-		// 			preg_match_all(
-		// 				$preg_match,
-		// 				$css_custom,
-		// 				$match
-		// 			);
-		// 			// var_dump($match);
-		// 			foreach ($match[1] as $value) {
-		// 				// $css_custom = str_replace($value,$replace,$css_custom);
-		// 			}
-		// 		}
-		// 	}
-		// 	// $css_custom = str_replace('游ゴシック体','',$css_custom);
-		// 	return $css_custom;
-		// }
 	}//class
 }//! class_exists
 
