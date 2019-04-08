@@ -116,6 +116,9 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 			// add_action('wp_enqueue_scripts', array($this, 'push_url'));
 		}//__construct()
 
+		static $_var = __DIR__.'/src/css/_var.php';//変数ファイル
+		static $src = __DIR__.'/src/';
+
 		//アインインストール時にオプション削除
 		private static function thx_co_uninstall() {
 			delete_option('thx_co_option');
@@ -127,9 +130,6 @@ if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 			array_unshift( $links, $add_link);
 			return $links;
 		}
-
-		static $_var = __DIR__.'/src/css/_var.php';//変数ファイル
-		static $src = __DIR__.'/src/';
 
 		//サブメニュー作成
 		static function add_sub_menu() {
