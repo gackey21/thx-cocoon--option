@@ -3,7 +3,7 @@
 Plugin Name: thx.jp/ Cocoon Option
 Plugin URI:
 Description: Cocoon設定の利用
-Version: 0.1.2
+Version: 0.2.0
 Author:Gackey.21
 Author URI: https://thx.jp
 License: GPL2
@@ -27,6 +27,24 @@ License: GPL2
 */
 ?>
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
+<?php
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+if ( ! is_plugin_active( 'thx-customize-core/plugin.php' ) ): ?>
+<?php
+	add_action( 'admin_notices', 'thx_Cocoon_Option_admin_notices' );
+	function thx_Cocoon_Option_admin_notices() {
+		?>
+		<div class="error notice is-dismissible">
+			<p>
+				thx.jp/ Cocoon Option を使用するには、thx.jp/ を有効化する必要があります。
+			</p>
+		</div>
+		<?php
+		deactivate_plugins( plugin_basename( __FILE__ ) );
+		unset( $_GET["activate"] );
+	}
+?>
+<?php else://! is_plugin_active( 'thx-customize-core/plugin.php' ) ?>
 <?php
 if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
 	class thx_Cocoon_Option {
@@ -157,6 +175,7 @@ require_once('src/php/cocoon-style.php');
 	// $tcc -> str_to_file($path, $tmp_php);
 
 new thx_Cocoon_Option;
+endif;//! is_plugin_active( 'thx-customize-core/plugin.php' )
 
 // ampの作られ方
 // amp.phpにて
