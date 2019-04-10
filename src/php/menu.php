@@ -18,18 +18,18 @@ function thx_cocoon_option_form() {
 			<div class="updated notice is-dismissible">
 				<p><strong>設定を保存しました。</strong></p>
 			</div>
-		$tcc = new thx_Customize_Core();
 		<?php
 		//thx-phped.cssを作成
 		$thx_co_option = get_option('thx_co_option');
 		$css = $thx_co_option['php_css_array'];
 		$path = thx_Cocoon_Option::$dest_dir.'thx-phped.css';
-		$tcc::str_to_file($path, $css);
+		thx_Customize_Core::str_to_file($path, $css);
 		?>
 		<?php endif; ?>
 	<?php endif;//isset ?>
 	<?php
 }//thx_cocoon_option_form()
+
 function thx_cocoon_option_settings_init() {
 	$thx_co_option = get_option('thx_co_option');
 	if( !$thx_co_option ) {
@@ -47,7 +47,7 @@ function thx_cocoon_option_settings_init() {
 		'thx_cocoon_option_section' // このセクションを表示するページ名。do_settings_sectionsで設定
 	);
 	function thx_cocoon_option_settings_section_callback() {
-		echo '<p>検証中の機能です。</p>';
+		// echo '<p>検証中の機能です。</p>';
 	}
 
 	//エントリーカード・サムネイルの余白を均等にする
