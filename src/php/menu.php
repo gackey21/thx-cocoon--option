@@ -18,8 +18,9 @@ function thx_cocoon_option_form() {
 			<div class="updated notice is-dismissible">
 				<p><strong>設定を保存しました。</strong></p>
 			</div>
-		<?php//thx-phped.cssを作成
 		$tcc = new thx_Customize_Core();
+		<?php
+		//thx-phped.cssを作成
 		$thx_co_option = get_option('thx_co_option');
 		$css = $thx_co_option['php_css_array'];
 		$path = thx_Cocoon_Option::$dest_dir.'thx-phped.css';
