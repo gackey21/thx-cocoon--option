@@ -34,7 +34,32 @@ function thx_cocoon_option_settings_init() {
 	$thx_co_option = get_option('thx_co_option');
 	if( !$thx_co_option ) {
 		$thx_co_option = array(
-			'equalizing_thumbnail_margin_in_entry_card' => 1,
+			'equalizing_thumbnail_margin_in_entry_card' => array(
+				'amp' => 1,
+				'style' => 1,
+			),
+			'wrap_hover' => array(
+				'amp' => 1,
+				'style' => 1,
+			),
+			'iwe_block_editor' => array(
+				'amp' => 1,
+				'style' => 1,
+			),
+			'pre' => array(
+				'amp' => 1,
+				'style' => 1,
+			),
+			'php_css' => array(
+				'amp' => 0,
+				'style' => 0,
+			),
+			'php_css_array' => '',
+			'replace_cocoon_style' => array(
+				'amp' => 0,
+				'style' => 0,
+			),
+			'replace_cocoon_style_array' => '',
 		);
 		update_option( 'thx_co_option', $thx_co_option );
 	}
