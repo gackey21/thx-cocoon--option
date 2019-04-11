@@ -50,8 +50,8 @@ if ( ! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' ) ) :
 	?>
 <?php else : //! is_plugin_active( 'thx-customize-core/plugin.php' ) ?>
 	<?php
-	if ( ! class_exists( 'thx_Cocoon_Option' ) ) {
-		class thx_Cocoon_Option {
+	if ( ! class_exists( 'Thx_Cocoon_Option' ) ) {
+		class Thx_Cocoon_Option {
 			//読み込むurl
 			static $push_css_dir = array();
 			static $push_amp_dir = array();
@@ -178,7 +178,7 @@ if ( ! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' ) ) :
 	// $path = get_stylesheet_directory().'/tmp/css-custom.php';
 	// $tcc -> str_to_file($path, $tmp_php);
 
-	new thx_Cocoon_Option;
+	new Thx_Cocoon_Option;
 endif;//! is_plugin_active( 'thx-customize-core/plugin.php' )
 
 // ampの作られ方
