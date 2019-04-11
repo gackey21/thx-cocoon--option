@@ -35,8 +35,8 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 if ( ! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' ) ) :
 	?>
 	<?php
-	add_action( 'admin_notices', 'thx_Cocoon_Option_admin_notices' );
-	function thx_Cocoon_Option_admin_notices() {
+	add_action( 'admin_notices', 'thx_cocoon_option_admin_notices' );
+	function thx_cocoon_option_admin_notices() {
 		?>
 		<div class="error notice is-dismissible">
 			<p>
