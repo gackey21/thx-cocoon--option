@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <?php
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-if ( ! is_plugin_active( 'thx-customize-core/plugin.php' ) ) :
+if ( ! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' ) ) :
 	?>
 	<?php
 	add_action( 'admin_notices', 'thx_Cocoon_Option_admin_notices' );
