@@ -19,8 +19,9 @@ if ( ! class_exists( 'Thx_HSLA_Modulation_On_Cocoon' ) ) {
 					$l = ( $max + $min ) / 2;
 					$d = $max - $min;
 
-					if ( $d == 0 ) {
-						$h = $s = 0;
+					if ( 0 === $d ) {
+						$h = 0;
+						$s = 0;
 					} else {
 						$s = $d / ( 1 - abs( 2 * $l - 1 ) );
 						switch ( $max ) {
@@ -56,21 +57,22 @@ if ( ! class_exists( 'Thx_HSLA_Modulation_On_Cocoon' ) ) {
 				$opacity = 1.0 ) {
 					$hsla['h'] += $hue;
 
-					$s = ( mb_substr( $saturation, -1 ) == '%' )
+					$s = ( mb_substr( $saturation, -1 ) === '%' )
 					? mb_substr( $saturation, 0, -1 ) / 100
 					: $hsla['s'] * $saturation;
 					//$s == 0の時、何故か'%'が付加されない
-					if ( $s == 0 ) {
+					//0 === $sでは拾えない
+					if ( ! $s ) {
 						$s = 0.0001;
 					}
 					$hsla['s'] = $s;
 
-					$l         = ( mb_substr( $lightness, -1 ) == '%' )
+					$l         = ( mb_substr( $lightness, -1 ) === '%' )
 					? mb_substr( $lightness, 0, -1 ) / 100
 					: $hsla['l'] * $lightness;
 					$hsla['l'] = $l;
 
-					$a         = ( mb_substr( $opacity, -1 ) == '%' )
+					$a         = ( mb_substr( $opacity, -1 ) === '%' )
 					? mb_substr( $opacity, 0, -1 ) / 100
 					: $hsla['a'] * $opacity;
 					$hsla['a'] = $a;
