@@ -74,9 +74,9 @@ else : //! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 				}
 
 				//親amp.cssの変更＆出力
-				add_filter( 'amp_parent_css', array( 'thx_Cocoon_amp', 'echo_amp_parent_css' ) );
+				add_filter( 'amp_parent_css', array( 'Thx_Cocoon_Amp', 'echo_amp_parent_css' ) );
 				//カスタマイズampの出力
-				add_filter( 'amp_all_css', array( 'thx_Cocoon_amp', 'echo_amp_all_css' ) );
+				add_filter( 'amp_all_css', array( 'Thx_Cocoon_Amp', 'echo_amp_all_css' ) );
 
 				//追加関数の読み込み
 				require_once( __DIR__ . '/src/php/class-thx-hsla-modulation-on-cocoon.php' );//hsla変調

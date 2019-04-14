@@ -2,8 +2,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-if ( ! class_exists( 'thx_HSLA_Modulation_on_Cocoon' ) ) {
-	class thx_HSLA_Modulation_on_Cocoon {
+if ( ! class_exists( 'Thx_HSLA_Modulation_On_Cocoon' ) ) {
+	class Thx_HSLA_Modulation_On_Cocoon {
 		public function __construct() {
 			//カラーコードをHSLAに変換
 			if ( ! function_exists( 'colorcode_to_hsla' ) ) :
@@ -118,4 +118,4 @@ if ( ! class_exists( 'thx_HSLA_Modulation_on_Cocoon' ) ) {
 	}//class
 }//! class_exists
 
-new thx_HSLA_Modulation_on_Cocoon;
+new Thx_HSLA_Modulation_On_Cocoon;

@@ -3,8 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 //amp処理クラス
-if ( ! class_exists( 'thx_Cocoon_amp' ) ) {
-	class thx_Cocoon_amp {
+if ( ! class_exists( 'Thx_Cocoon_Amp' ) ) {
+	class Thx_Cocoon_Amp {
 		public function __construct() {
 		}//__construct()__construct()__construct()
 
@@ -43,5 +43,5 @@ if ( ! class_exists( 'thx_Cocoon_amp' ) ) {
 			$css    .= minify_css( $minimum );
 			echo $css;
 		}//echo_amp_all_css($css)
-	}//class thx_Cocoon_amp
-}//! class_exists( 'thx_Cocoon_amp' )
+	}//class Thx_Cocoon_Amp
+}//! class_exists( 'Thx_Cocoon_Amp' )
