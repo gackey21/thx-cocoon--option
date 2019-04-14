@@ -79,7 +79,7 @@ else : //! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 				add_filter( 'amp_all_css', array( 'thx_Cocoon_amp', 'echo_amp_all_css' ) );
 
 				//追加関数の読み込み
-				require_once( __DIR__ . '/src/php/hsla.php' );//hsla変調
+				require_once( __DIR__ . '/src/php/class-thx-hsla-modulation-on-cocoon.php' );//hsla変調
 				require_once( __DIR__ . '/src/php/is-mobile.php' );//スマホ判別
 
 				//エントリーカード・サムネイルの余白を均等にする
@@ -133,7 +133,7 @@ else : //! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 				// add_action('wp_enqueue_scripts', array($this, 'push_url'));
 			}//__construct()
 
-			static $_var = __DIR__ . '/src/css/_var.php';//変数ファイル
+			static $_var = __DIR__ . '/src/css/-var.php';//変数ファイル
 			static $src  = __DIR__ . '/src/';
 
 			//アインインストール時にオプション削除
@@ -163,6 +163,7 @@ else : //! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 	}//! class_exists
 
 	require_once( 'src/php/menu.php' );
+	require_once( 'src/php/class-thx-hsla-modulation-on-cocoon.php' );
 	require_once( 'src/php/cocoon-style.php' );
 
 	// ヘッダー部の書き換えβ
