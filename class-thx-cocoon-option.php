@@ -28,13 +28,10 @@ License: GPL2
 ?>
 <?php
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;}
-?>
-<?php
+	exit;
+}
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 if ( ! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' ) ) :
-	?>
-	<?php
 	add_action( 'admin_notices', 'thx_cocoon_option_admin_notices' );
 	function thx_cocoon_option_admin_notices() {
 		?>
@@ -47,9 +44,7 @@ if ( ! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' ) ) :
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		unset( $_GET['activate'] );
 	}
-	?>
-<?php else : //! is_plugin_active( 'thx-customize-core/plugin.php' ) ?>
-	<?php
+else : //! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 	if ( ! class_exists( 'Thx_Cocoon_Option' ) ) {
 		class Thx_Cocoon_Option {
 			//読み込むurl
@@ -179,7 +174,7 @@ if ( ! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' ) ) :
 	// $tcc -> str_to_file($path, $tmp_php);
 
 	new Thx_Cocoon_Option;
-endif;//! is_plugin_active( 'thx-customize-core/plugin.php' )
+endif;//! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 
 // ampの作られ方
 // amp.phpにて
