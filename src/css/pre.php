@@ -1,4 +1,8 @@
-<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+?>
 /* ハイライト表示を横スクロールに変更 */
 pre {
 	word-wrap: normal;

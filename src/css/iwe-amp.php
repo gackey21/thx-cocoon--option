@@ -1,4 +1,8 @@
-<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+?>
 /*ボーダー*/
 .iwe-border .wp-block-image amp-img,
 .iwe-border .wp-block-gallery amp-img {
