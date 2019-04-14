@@ -57,8 +57,8 @@ if ( ! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' ) ) :
 			static $push_amp_dir = array();
 			static $replace_cocoon_css;
 			static $replace_cocoon_amp;
-			static $css_dir  = __DIR__ . '/src/css/';
-			static $dest_dir = __DIR__ . '/dest/';
+			const CSS_DIR  = __DIR__ . '/src/css/';
+			const DEST_DIR = __DIR__ . '/dest/';
 
 			public function __construct() {
 				$thx_co_option = get_option( 'thx_co_option' );
@@ -89,50 +89,50 @@ if ( ! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' ) ) :
 
 				//エントリーカード・サムネイルの余白を均等にする
 				if ( '1' === $thx_co_option['equalizing_thumbnail_margin_in_entry_card']['amp'] ) {
-					$this::$push_amp_dir[] = $this::$css_dir . 'entry-card-margin.php';
+					self::$push_amp_dir[] = self::CSS_DIR . 'entry-card-margin.php';
 				}
 				if ( '1' === $thx_co_option['equalizing_thumbnail_margin_in_entry_card']['style'] ) {
-					$this::$push_css_dir[] = $this::$css_dir . 'entry-card-margin.php';
+					self::$push_css_dir[] = self::CSS_DIR . 'entry-card-margin.php';
 				}
 
 				//カードをホバー（COLORS風）
 				if ( '1' === $thx_co_option['wrap_hover']['amp'] ) {
-					$this::$push_amp_dir[] = $this::$css_dir . 'wrap-hover.php';
+					self::$push_amp_dir[] = self::CSS_DIR . 'wrap-hover.php';
 				}
 				if ( '1' === $thx_co_option['wrap_hover']['style'] ) {
-					$this::$push_css_dir[] = $this::$css_dir . 'wrap-hover.php';
+					self::$push_css_dir[] = self::CSS_DIR . 'wrap-hover.php';
 				}
 
 				//画像の囲み効果（ブロックエディタ）
 				if ( '1' === $thx_co_option['iwe_block_editor']['amp'] ) {
-					$this::$push_amp_dir[] = $this::$css_dir . 'iwe-amp.php';
+					self::$push_amp_dir[] = self::CSS_DIR . 'iwe-amp.php';
 				}
 				if ( '1' === $thx_co_option['iwe_block_editor']['style'] ) {
-					$this::$push_css_dir[] = $this::$css_dir . 'iwe-css.php';
+					self::$push_css_dir[] = self::CSS_DIR . 'iwe-css.php';
 				}
 
 				//ハイライト表示を横スクロールに変更
 				if ( '1' === $thx_co_option['pre']['amp'] ) {
-					$this::$push_amp_dir[] = $this::$css_dir . 'pre.php';
+					self::$push_amp_dir[] = self::CSS_DIR . 'pre.php';
 				}
 				if ( '1' === $thx_co_option['pre']['style'] ) {
-					$this::$push_css_dir[] = $this::$css_dir . 'pre.php';
+					self::$push_css_dir[] = self::CSS_DIR . 'pre.php';
 				}
 
 				//phpでcssを記述
 				if ( '1' === $thx_co_option['php_css']['amp'] ) {
-					$this::$push_amp_dir[] = $this::$dest_dir . 'thx-phped.css';
+					self::$push_amp_dir[] = self::DEST_DIR . 'thx-phped.css';
 				}
 				if ( '1' === $thx_co_option['php_css']['style'] ) {
-					$this::$push_css_dir[] = $this::$dest_dir . 'thx-phped.css';
+					self::$push_css_dir[] = self::DEST_DIR . 'thx-phped.css';
 				}
 
 				//親スタイルの変更
 				if ( '1' === $thx_co_option['replace_cocoon_style']['amp'] ) {
-					$this::$replace_cocoon_amp = $thx_co_option['replace_cocoon_style_array'];
+					self::$replace_cocoon_amp = $thx_co_option['replace_cocoon_style_array'];
 				}
 				if ( '1' === $thx_co_option['replace_cocoon_style']['style'] ) {
-					$this::$replace_cocoon_css = $thx_co_option['replace_cocoon_style_array'];
+					self::$replace_cocoon_css = $thx_co_option['replace_cocoon_style_array'];
 				}
 
 				// add_action('wp_enqueue_scripts', array($this, 'push_url'));
