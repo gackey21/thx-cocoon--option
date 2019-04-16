@@ -70,7 +70,7 @@ else : //! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 
 				//アンインストール
 				if ( function_exists( 'register_uninstall_hook' ) ) {
-					register_uninstall_hook( __FILE__, 'thx_Cocoon_Option::thx_co_uninstall' );
+					register_uninstall_hook( __FILE__, 'Thx_Cocoon_Option::thx_co_uninstall' );
 				}
 
 				//親amp.cssの変更＆出力
