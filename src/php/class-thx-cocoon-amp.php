@@ -24,7 +24,7 @@ if ( ! class_exists( 'Thx_Cocoon_Amp' ) ) {
 			// $tcc -> str_to_file($path, $css);
 
 			$css = minify_css( $css );
-			echo $css;
+			return $css;
 		}//echo_amp_parent_css($css)
 
 		//amp_all_cssにecho

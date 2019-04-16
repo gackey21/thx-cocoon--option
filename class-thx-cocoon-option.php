@@ -137,7 +137,7 @@ else : //! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 			static $src  = __DIR__ . '/src/';
 
 			//アインインストール時にオプション削除
-			private static function thx_co_uninstall() {
+			static function thx_co_uninstall() {
 				delete_option( 'thx_co_option' );
 			}
 
@@ -163,7 +163,7 @@ else : //! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 	}//! class_exists
 
 	require_once( 'src/php/menu.php' );
-	require_once( 'src/php/class-thx-hsla-modulation-on-cocoon.php' );
+	require_once( 'src/php/class-thx-cocoon-amp.php' );
 	require_once( 'src/php/cocoon-style.php' );
 
 	// ヘッダー部の書き換えβ
