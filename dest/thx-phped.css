@@ -247,3 +247,12 @@ li ul li:before {
 .wp-block-gallery li:before {
 	display: none;
 }
+<?php
+///////////////////////////////////////
+// blockquote
+?>
+blockquote {
+	border-width: 1px;
+	padding: <?=$thx_glh - 1?>px <?=$thx_fw - 1?>px;
+	<?=$thx_frost?>
+}
