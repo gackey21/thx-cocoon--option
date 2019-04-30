@@ -3,7 +3,7 @@
 Plugin Name: thx.jp/ Cocoon Option
 Plugin URI:
 Description: Cocoon設定の利用
-Version: 0.2.1
+Version: 0.2.2
 Author:Gackey.21
 Author URI: https://thx.jp
 License: GPL2
@@ -138,7 +138,10 @@ else : //! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 
 			//アインインストール時にオプション削除
 			static function thx_co_uninstall() {
-				delete_option( 'thx_co_option' );
+				$thx_co_option = get_option( 'thx_co_option' );
+				if ( '1' !== $thx_co_option['keep_option'] ) {
+					delete_option( 'thx_co_option' );
+				}
 			}
 
 			//設定リンク追加

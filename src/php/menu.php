@@ -63,6 +63,7 @@ function thx_cocoon_option_settings_init() {
 				'style' => 0,
 			),
 			'replace_cocoon_style_array'                => '',
+			'keep_option'                               => '1',
 		);
 		update_option( 'thx_co_option', $thx_co_option );
 	}
@@ -223,6 +224,21 @@ function thx_cocoon_option_settings_init() {
 				'rows'              => '20',
 				'add'               => '',
 			),
+		)
+	);
+
+	//オプションの保持
+	add_settings_field(
+		'thx_keep_option',
+		'設定の保持',
+		'thx_single_checkbox_callback',
+		'thx_cocoon_option_section',
+		'thx_cocoon_option_settings_section',
+		array(
+			'option_name'       => 'thx_co_option',
+			'option_array_name' => 'keep_option',
+			'comment'           => 'アンインストール時に設定を残す',
+			'add'               => '',
 		)
 	);
 }//thx_cocoon_option_settings_init()
