@@ -256,3 +256,14 @@ blockquote {
 	padding: <?=$thx_glh - 1?>px <?=$thx_fw - 1?>px;
 	<?=$thx_frost?>
 }
+<?php
+///////////////////////////////////////
+// pre
+?>
+pre {
+	-moz-tab-size: 2;
+	tab-size: 2;
+}
+code {
+	font-family: "Courier New", Consolas, monospace;
+}
