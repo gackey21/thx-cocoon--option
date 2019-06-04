@@ -180,9 +180,12 @@ h6,
 	padding-left: <?=$thx_fw * $thx_sb_ratio * 1.5?>px;
 }
 .sidebar ul li a {
+	display: block;
 	margin-top: <?=$thx_gls * $thx_sb_ratio?>px;
 	border-bottom: 1px solid <?=$thx_sub__050?>;
 	padding: 4px 4px 2px;
+	color: <?php echo $thx_text_color; ?>;
+	text-decoration: none;
 	line-height: 1;
 }
 .sidebar ul li a:hover {
