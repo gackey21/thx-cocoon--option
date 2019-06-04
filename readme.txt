@@ -8,10 +8,10 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-thx.jp² means 'Typesetting with Half-width-space eXtra in Japanese' ; made by thx.jp/
+Use Cocoon Option for stylesheet on php
 
 
 == Changelog ==
 
 = 0.4.0 =
-* Moving from thx.jp(customize-core) with PUC.
+* PUC
