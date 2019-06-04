@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: thx.jp/ Cocoon Option
+Plugin Name: thx.jp²⁻¹ cocoon option
 Plugin URI:
 Description: Cocoon設定の利用
 Version: 0.4.0
@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-if ( ! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' ) ) :
+if ( ! is_plugin_active( 'thx--jp--square/class-thx-customize-core.php' ) ) :
 	add_action( 'admin_notices', 'thx_cocoon_option_admin_notices' );
 	function thx_cocoon_option_admin_notices() {
 		?>
