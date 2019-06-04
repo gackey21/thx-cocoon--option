@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: thx.jp²⁻¹ cocoon option
+Plugin Name: thx.jp²⁻¹ Cocoon Option
 Plugin URI:
 Description: Cocoon設定の利用
 Version: 0.4.0
@@ -37,7 +37,7 @@ if ( ! is_plugin_active( 'thx--jp--square/class-thx-customize-core.php' ) ) :
 		?>
 		<div class="error notice is-dismissible">
 			<p>
-				thx.jp/ Cocoon Option を使用するには、thx.jp/ を有効化する必要があります。
+				thx.jp²⁻¹ Cocoon Option を使用するには、thx.jp² を有効化する必要があります。
 			</p>
 		</div>
 		<?php
