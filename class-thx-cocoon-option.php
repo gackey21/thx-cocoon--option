@@ -68,6 +68,14 @@ else : //! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 					array( $this, 'add_action_links' )
 				);
 
+				//自動アップデート
+				require plugin_dir_path( __FILE__ ) . 'plugin-update-checker/plugin-update-checker.php';
+				$my_update_checker = Puc_v4_Factory::buildUpdateChecker(
+					'https://github.com/gackey21/thx-cocoon--option/',
+					__FILE__,
+					'thx-cocoon-option'
+				);
+
 				//アンインストール
 				if ( function_exists( 'register_uninstall_hook' ) ) {
 					register_uninstall_hook( __FILE__, 'Thx_Cocoon_Option::thx_co_uninstall' );
