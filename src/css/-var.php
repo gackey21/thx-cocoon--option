@@ -67,6 +67,13 @@ if ( get_site_key_text_color() ) {
 	$thx_key_text = get_site_key_text_color();
 }
 
+//サイトテキストカラー
+if ( get_site_text_color() ) {
+	$thx_text_color = get_site_text_color();
+} else {
+	$thx_text_color = '#333';
+}
+
 //サイト背景色
 if ( get_site_background_color() ) {
 	$thx_bg = get_site_background_color();
