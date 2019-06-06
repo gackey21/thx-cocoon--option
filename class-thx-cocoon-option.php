@@ -170,6 +170,15 @@ else : //! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 					'thx_cocoon_option_form'
 				);
 			}
+
+			//プラグインの汎用キャッシュディレクトリ
+			public static function get_resources_path() {
+				$dir = thx_Customize_Core::get_resources_path() . 'cocoon-option/';
+				if ( ! file_exists( $dir ) ) {
+					mkdir( $dir, 0777, true );
+				}
+				return $dir;
+			}
 		}//class
 	}//! class_exists
 
