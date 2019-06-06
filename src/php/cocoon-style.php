@@ -14,11 +14,11 @@ if ( ! function_exists( 'wp_enqueue_style_theme_style' ) ) :
 			$css = thx_Customize_Core::str_preg_replace( $css, $preg_match_array );
 		}
 		//ファイル書き出し
-		$path = __DIR__ . '/../../dest/thx-style.css';
+		$path = Thx_Cocoon_Option::get_resources_path() . 'thx-style.css';
 		thx_Customize_Core::str_to_file( $path, $css );
 		wp_enqueue_style(
 			THEME_NAME . '-style',
-			plugins_url( '../../dest/thx-style.css', __FILE__ )
+			local_to_url( $path )
 		);
 	}
 endif;//!function_exists( 'wp_enqueue_style_theme_style' )

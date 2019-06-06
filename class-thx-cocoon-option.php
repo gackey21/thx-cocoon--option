@@ -52,8 +52,7 @@ else : //! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 			static $push_amp_dir = array();
 			static $replace_cocoon_css;
 			static $replace_cocoon_amp;
-			const CSS_DIR  = __DIR__ . '/src/css/';
-			const DEST_DIR = __DIR__ . '/dest/';
+			const CSS_DIR = __DIR__ . '/src/css/';
 
 			public function __construct() {
 				$thx_co_option = get_option( 'thx_co_option' );
@@ -124,10 +123,10 @@ else : //! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 
 				//phpでcssを記述
 				if ( '1' === $thx_co_option['php_css']['amp'] ) {
-					self::$push_amp_dir[] = self::DEST_DIR . 'thx-phped.css';
+					self::$push_amp_dir[] = self::get_resources_path() . 'thx-phped.css';
 				}
 				if ( '1' === $thx_co_option['php_css']['style'] ) {
-					self::$push_css_dir[] = self::DEST_DIR . 'thx-phped.css';
+					self::$push_css_dir[] = self::get_resources_path() . 'thx-phped.css';
 				}
 
 				//親スタイルの変更
