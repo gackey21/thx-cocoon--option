@@ -215,7 +215,7 @@ $thx_clm_mg = $thx_fw * 2;
 if ( $is_safari ) {
 	$str_mg_shift = 1;
 } elseif ( $is_gecko ) {
-	$str_mg_shift = 0.5;
+	$str_mg_shift = 0;
 } else {
 	$str_mg_shift = 0;
 }
