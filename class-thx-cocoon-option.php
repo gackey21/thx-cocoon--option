@@ -30,14 +30,31 @@ License: GPL2
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+const REQUIRE_TCC_VER = '0.4.3';
+$enabled_tcc_ver      = get_file_data(
+	WP_PLUGIN_DIR . '/thx--jp--square/class-thx-customize-core.php',
+	array(
+		'version' => 'Version',
+	)
+);
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-if ( ! is_plugin_active( 'thx--jp--square/class-thx-customize-core.php' ) ) :
+if (
+	! is_plugin_active( 'thx--jp--square/class-thx-customize-core.php' )
+	||
+	! version_compare( REQUIRE_TCC_VER, $enabled_tcc_ver['version'], '<=' )
+	) :
 	add_action( 'admin_notices', 'thx_cocoon_option_admin_notices' );
 	function thx_cocoon_option_admin_notices() {
 		?>
 		<div class="error notice is-dismissible">
 			<p>
-				thx.jp²⁻¹ Cocoon Option を使用するには、thx.jp² を有効化する必要があります。
+				<?php
+				echo
+				'thx.jp²⁻¹ Cocoon Option を使用するには、' .
+				'thx.jp² ver.' .
+				REQUIRE_TCC_VER .
+				' 以上を有効化する必要があります。';
+				?>
 			</p>
 		</div>
 		<?php
