@@ -172,11 +172,12 @@ $thx_snipet_ratio = 0.75;
 ///////////////////////////////////////
 // メディアクエリ
 ///////////////////////////////////////
-$mq_iphone_p     = '(max-width: 414px) and (orientation: portrait)';
-$mq_iphone_l     = '(min-width: 568px) and (orientation: landscape)';
-$mq_ipad_p       = '(min-width: 768px) and (orientation: portrait)';
-$mq_ipad_l       = '(min-width: 1024px) and (orientation: landscape)';
-$mq_not_iphone_p = array( $mq_iphone_l, $mq_ipad_p, $mq_ipad_l );
+$mq_iphone_p        = '(max-width: 414px) and (orientation: portrait)';
+$mq_iphone_l        = '(min-width: 568px) and (orientation: landscape)';
+$mq_ipad_p          = '(min-width: 768px) and (orientation: portrait)';
+$mq_ipad_l          = '(min-width: 1024px) and (orientation: landscape)';
+$mq_not_iphone_p    = array( $mq_iphone_l, $mq_ipad_p, $mq_ipad_l );
+$mq_site_wrap_width = '(min-width: ' . get_site_wrap_width() . 'px)';
 
 ///////////////////////////////////////
 // カラム（メインカラム）の指定
