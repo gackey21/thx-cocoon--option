@@ -197,6 +197,21 @@ $thx_main_wd             += floatval( $main_column_padding ) * 2;
 $thx_main_wd             += floatval( $main_column_border_width ) * 2;
 $thx_main_wd_px           = $thx_main_wd . 'px';
 
+// サイドバーの幅
+$thx_sidebar_wd       = get_sidebar_contents_width()
+	? get_sidebar_contents_width()
+	: 336;
+$thx_sidebar_wd       = $thx_sidebar_wd - fmod( $thx_sidebar_wd, round( $thx_fw * $thx_sb_ratio ) );
+$sidebar_padding      = get_sidebar_padding()
+	? get_sidebar_padding()
+	: 9;
+$sidebar_border_width = get_sidebar_border_width()
+	? get_sidebar_border_width()
+	: 1;
+$thx_sidebar_wd      += floatval( $sidebar_padding ) * 2;
+$thx_sidebar_wd      += floatval( $sidebar_border_width ) * 2;
+$thx_sidebar_wd_px    = $thx_sidebar_wd . 'px';
+
 ///////////////////////////////////////
 // カラム（.wp-block-columns）の指定
 ///////////////////////////////////////
