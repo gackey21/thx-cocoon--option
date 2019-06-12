@@ -183,24 +183,19 @@ $mq_not_iphone_p = array( $mq_iphone_l, $mq_ipad_p, $mq_ipad_l );
 ///////////////////////////////////////
 
 //メインカラムの幅
-if ( wp_is_mobile() ) {
-	$thx_main_wd_px = 'auto';
-} else {
-	$thx_main_wd              = get_main_column_contents_width()
-		? get_main_column_contents_width()
-		: 800;
-	$thx_main_wd              = $thx_main_wd - fmod( $thx_main_wd, $thx_fw );
-	$main_column_padding      = get_main_column_padding()
-		? get_main_column_padding()
-		: 29;
-	$main_column_border_width = get_main_column_border_width()
-		? get_main_column_border_width()
-		: 1;
-	$thx_main_wd             += floatval( $main_column_padding ) * 2;
-	$thx_main_wd             += floatval( $main_column_border_width ) * 2;
-	$thx_main_wd_px           = $thx_main_wd . 'px';
-
-}//wp_is_mobile()
+$thx_main_wd              = get_main_column_contents_width()
+	? get_main_column_contents_width()
+	: 800;
+$thx_main_wd              = $thx_main_wd - fmod( $thx_main_wd, $thx_fw );
+$main_column_padding      = get_main_column_padding()
+	? get_main_column_padding()
+	: 29;
+$main_column_border_width = get_main_column_border_width()
+	? get_main_column_border_width()
+	: 1;
+$thx_main_wd             += floatval( $main_column_padding ) * 2;
+$thx_main_wd             += floatval( $main_column_border_width ) * 2;
+$thx_main_wd_px           = $thx_main_wd . 'px';
 
 ///////////////////////////////////////
 // カラム（.wp-block-columns）の指定
