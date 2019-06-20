@@ -3,7 +3,7 @@
 Plugin Name: thx.jp²⁻¹ Cocoon Option
 Plugin URI:
 Description: Cocoon設定の利用
-Version: 0.4.5
+Version: 0.4.6
 Author:Gackey.21
 Author URI: https://thx.jp
 License: GPL2
@@ -30,7 +30,7 @@ License: GPL2
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-const REQUIRE_TCC_VER = '0.4.5';
+const REQUIRE_TCC_VER = '0.4.6';
 $enabled_tcc_ver      = get_file_data(
 	WP_PLUGIN_DIR . '/thx--jp--square/class-thx-customize-core.php',
 	array(
@@ -70,9 +70,16 @@ else : //! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 			static $replace_cocoon_css;
 			static $replace_cocoon_amp;
 			const CSS_DIR = __DIR__ . '/src/css/';
+			//プラグインの汎用キャッシュディレクトリ
+			const RESOURCES_PATH = thx_Customize_Core::RESOURCES_PATH . 'cocoon-option/';
 
 			public function __construct() {
 				$thx_co_option = get_option( 'thx_co_option' );
+
+				//プラグインの汎用キャッシュディレクトリが無ければ作成
+				if ( ! file_exists( self::RESOURCES_PATH ) ) {
+					mkdir( self::RESOURCES_PATH, 0777, true );
+				}
 
 				//管理画面の設定
 				add_action( 'admin_menu', array( $this, 'add_sub_menu' ) );
@@ -140,10 +147,10 @@ else : //! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 
 				//phpでcssを記述
 				if ( '1' === $thx_co_option['php_css']['amp'] ) {
-					self::$push_amp_dir[] = self::get_resources_path() . 'thx-phped.css';
+					self::$push_amp_dir[] = self::RESOURCES_PATH . 'thx-phped.css';
 				}
 				if ( '1' === $thx_co_option['php_css']['style'] ) {
-					self::$push_css_dir[] = self::get_resources_path() . 'thx-phped.css';
+					self::$push_css_dir[] = self::RESOURCES_PATH . 'thx-phped.css';
 				}
 
 				//親スタイルの変更
@@ -185,15 +192,6 @@ else : //! is_plugin_active( 'thx-customize-core/class-thx-customize-core.php' )
 					'thx-jp-cocoon-option',
 					'thx_cocoon_option_form'
 				);
-			}
-
-			//プラグインの汎用キャッシュディレクトリ
-			public static function get_resources_path() {
-				$dir = thx_Customize_Core::get_resources_path() . 'cocoon-option/';
-				if ( ! file_exists( $dir ) ) {
-					mkdir( $dir, 0777, true );
-				}
-				return $dir;
 			}
 		}//class
 	}//! class_exists

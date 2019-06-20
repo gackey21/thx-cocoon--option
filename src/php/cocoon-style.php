@@ -14,7 +14,7 @@ if ( ! function_exists( 'wp_enqueue_style_theme_style' ) ) :
 			$css = thx_Customize_Core::str_preg_replace( $css, $preg_match_array );
 		}
 		//ファイル書き出し
-		$path = Thx_Cocoon_Option::get_resources_path() . 'thx-style.css';
+		$path = Thx_Cocoon_Option::RESOURCES_PATH . 'thx-style.css';
 		thx_Customize_Core::str_to_file( $path, $css );
 		wp_enqueue_style(
 			THEME_NAME . '-style',

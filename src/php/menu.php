@@ -25,7 +25,7 @@ function thx_cocoon_option_form() {
 			//thx-phped.cssを作成
 			$thx_co_option = get_option( 'thx_co_option' );
 			$css           = $thx_co_option['php_css_array'];
-			$path          = Thx_Cocoon_Option::get_resources_path() . 'thx-phped.css';
+			$path          = Thx_Cocoon_Option::RESOURCES_PATH . 'thx-phped.css';
 			thx_Customize_Core::str_to_file( $path, $css );
 			?>
 		<?php endif; ?>
