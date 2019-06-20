@@ -3,7 +3,7 @@
 Plugin Name: thx.jp²⁻¹ Cocoon Option
 Plugin URI:
 Description: Cocoon設定の利用
-Version: 0.4.4
+Version: 0.4.5
 Author:Gackey.21
 Author URI: https://thx.jp
 License: GPL2
@@ -30,7 +30,7 @@ License: GPL2
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-const REQUIRE_TCC_VER = '0.4.3';
+const REQUIRE_TCC_VER = '0.4.5';
 $enabled_tcc_ver      = get_file_data(
 	WP_PLUGIN_DIR . '/thx--jp--square/class-thx-customize-core.php',
 	array(
