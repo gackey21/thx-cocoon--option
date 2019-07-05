@@ -3,7 +3,7 @@
 Plugin Name: thx.jp²⁻¹ Cocoon Option
 Plugin URI:
 Description: Cocoon設定の利用
-Version: 0.4.6
+Version: 0.4.7
 Author:Gackey.21
 Author URI: https://thx.jp
 License: GPL2
