@@ -153,6 +153,13 @@ if ( is_mobile() ) {
 	$thx_fz    = $thx_mb_fz;
 	$thx_fz_px = $thx_mb_fz_px;
 }
+
+//cookie取得
+if ( isset( $_COOKIE['thx_adjusted_fz'] ) ) {
+	$thx_fz    = $_COOKIE['thx_adjusted_fz'];
+	$thx_fz_px = $thx_fz . 'px';
+}
+
 $thx_gls    = floatval( get_grid_line_space( $thx_fz, $thx_lh ) );
 $thx_gls_px = $thx_gls . 'px';
 $thx_glh    = floatval( get_grid_line_height( $thx_fz, $thx_lh ) );
