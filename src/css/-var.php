@@ -173,6 +173,7 @@ $thx_fw_px         = $thx_fw . 'px';
 //サイドバーのサイズ比率
 $thx_sb_ratio = 0.875;
 $thx_sb_fz    = round( $thx_fz * $thx_sb_ratio );
+$thx_sb_fw    = round( $thx_fw * $thx_sb_ratio );
 $thx_sb_gls   = round( ( $thx_lh - 1 ) * $thx_sb_fz / 2 ) * 2;
 $thx_sb_glh   = $thx_sb_fz + $thx_sb_gls;
 
